@@ -35,7 +35,7 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
         if (bar >= 100.0f||bar<=0.0f)
             barSpeed *= -1.0f;
         StrengthBarImage.fillAmount = bar / 100.0f ;/// 100.0f;
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButton("Fire1"))
             if (!tm.isLaunched)
                 Launch();
     }
@@ -49,7 +49,7 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
         bm.enabled = true;
         tm.isLaunched = true;
         tm.speedX = launchSpeed * strength;//Х = скорость катапульты*силу*направление !!!!!!!!!!!!!!!!!!!Возможно силу стоит убрать, т.к. bar и так влияет на направление, что и так влияет на силу
-        tm.speedY = launchSpeed * strength * direction.y ;//Y = скорость катапульты*силу*направление !!!!!!!!!!!!!!!!!!!Возможно силу стоит убрать, т.к. bar и так влияет на направление, что и так влияет на силу
+        tm.speedY = launchSpeed * strength * direction.y/direction.x ;//Y = скорость катапульты*силу*направление !!!!!!!!!!!!!!!!!!!Возможно силу стоит убрать, т.к. bar и так влияет на направление, что и так влияет на силу
         StrengthBarImage.enabled = false;
     }
 
