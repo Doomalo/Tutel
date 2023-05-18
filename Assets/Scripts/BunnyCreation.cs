@@ -10,6 +10,8 @@ public class BunnyCreation : MonoBehaviour
     private void Start()
     {
         bunny = Instantiate(bunnyPrefabs[PlayerPrefs.GetInt("Level", 1)-1]) as GameObject;
+        bunny.transform.position = gameObject.transform.position;
         bunny.gameObject.tag = "Bunny";
+        Destroy(this.gameObject);
     }
 }
