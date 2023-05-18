@@ -1143,61 +1143,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableObjects:
-  - name: 
+  - name: "\u0412\u0435\u0442\u0435\u0440"
     prefab: {fileID: 8021176858672969201, guid: 2ede2532f22dfba49908dbc8c576d563, type: 3}
-    weight: 2
-    minY: -3.5
-    maxY: 20
-  - name: 
+    weight: 1
+    minY: 10
+    maxY: 50
+  - name: "\u0412\u0435\u0442\u043A\u0430"
     prefab: {fileID: 2501642842963985615, guid: 294a028c848d7d64ca65f34883ee8286, type: 3}
     weight: 1
-    minY: -3.5
-    maxY: 20
-  - name: 
+    minY: -2
+    maxY: 5
+  - name: "\u0413\u0440\u0438\u0431"
     prefab: {fileID: 3496971002013615030, guid: d3f8f13037d33be43821b4a5c4d5b157, type: 3}
     weight: 1
-    minY: -3.5
-    maxY: 20
-  - name: 
+    minY: -4
+    maxY: -3
+  - name: "\u041F\u0430\u0443\u0442\u0438\u043D\u0430"
     prefab: {fileID: 417766989676048383, guid: ce98f51462da1fa43b35b83430cec4ca, type: 3}
     weight: 1
-    minY: -3.5
-    maxY: 20
-  - name: 
+    minY: -2
+    maxY: 5
+  - name: "\u041F\u0442\u0438\u0446\u0430"
     prefab: {fileID: 6507339362739352253, guid: 0182476fedf400e4ebe6ff6d0470cd25, type: 3}
     weight: 1
-    minY: -3.5
-    maxY: 20
-  - name: 
+    minY: 10
+    maxY: 50
+  - name: "\u041F\u0447\u0451\u043B\u044B"
     prefab: {fileID: 3502931594405642457, guid: 3c7b1e09be2ded641bae9893a26801f4, type: 3}
     weight: 1
-    minY: -3.5
-    maxY: 20
-  - name: 
+    minY: 3
+    maxY: 25
+  - name: "\u0421\u0430\u043C\u043E\u043B\u0451\u0442"
     prefab: {fileID: 4030936062342113622, guid: 3804080855660da40924bbff6ad43af4, type: 3}
     weight: 1
-    minY: -3.5
-    maxY: 20
-  - name: 
+    minY: 30
+    maxY: 50
+  - name: "\u0428\u0430\u0440\u0438\u043A"
     prefab: {fileID: 8709558036558708112, guid: 104a1a9b9fd62314a92309e5a1ea0641, type: 3}
     weight: 1
-    minY: -3.5
-    maxY: 20
-  - name: 
+    minY: 6
+    maxY: 36
+  - name: "\u0401\u0436"
     prefab: {fileID: 3757953076022599555, guid: 20d044f71aef52a499207964dfa5f427, type: 3}
     weight: 1
-    minY: -3.5
-    maxY: 20
-  - name: 
+    minY: -4
+    maxY: -3
+  - name: "\u0410\u0438\u0441\u0442"
     prefab: {fileID: 545660083343647776, guid: 217d75e6f690a7a4fbfd1fa31e2b4e50, type: 3}
     weight: 1
-    minY: -3.5
-    maxY: 20
-  - name: 
+    minY: 8
+    maxY: 36
+  - name: "\u041C\u0435\u0434\u0432\u0435\u0434\u044C"
     prefab: {fileID: 6647424081838662252, guid: 47d1696ac9a808f49b3c8daf97aabb6d, type: 3}
     weight: 1
-    minY: -3.5
-    maxY: 20
+    minY: -4
+    maxY: -3
   level2: []
   level3: []
   level4: []
@@ -1614,7 +1614,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1622,7 +1622,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &2016034866
@@ -1633,7 +1633,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016034864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.8, y: 3.98, z: 0}
+  m_LocalPosition: {x: -19.76, y: -2.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1656,6 +1656,7 @@ MonoBehaviour:
   - {fileID: 4514959142286604693, guid: e53b0a6d3988fca4492df2c56d5f77de, type: 3}
   - {fileID: 2295811281057615196, guid: 3890c137e40c81647861dc689186214f, type: 3}
   - {fileID: 6547573697354805605, guid: 334826e7c7b72e3478a35af1e40926c6, type: 3}
+  launcher: {fileID: 154288536}
 --- !u!1 &2089944327 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4741104973574056628, guid: 29f243f0ae86aca4a86a66074b8bdd61, type: 3}
@@ -1695,7 +1696,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 95c66d23795365b45a0a11e1c4a6d75f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
