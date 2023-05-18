@@ -7,8 +7,12 @@ public class BunnyMovement : MonoBehaviour
     public float speed;
     private Animator anim;
     public bool win = true;
+    private SpriteRenderer spriteRenderer;
+    public Sprite[] rabbitSkins;
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = rabbitSkins[PlayerPrefs.GetInt("Level", 1)];               /// ѕолучить номер установленного скина
         anim = GetComponent<Animator>();
     }
     void FixedUpdate()

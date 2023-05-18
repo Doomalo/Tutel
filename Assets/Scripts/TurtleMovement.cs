@@ -61,7 +61,7 @@ public class TurtleMovement : MonoBehaviour
                 if (speedX > 40)
                 {// Если ушли в +40 скорость, то взлетаем
                     _anim.SetBool("is_falling", false);
-                    Debug.Log("false");
+                  //  Debug.Log("false");
                     flyingNow = true;
                 }
             }
