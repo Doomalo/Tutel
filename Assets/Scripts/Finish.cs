@@ -26,6 +26,8 @@ public class Finish : MonoBehaviour
            if (tm.win)                                                                                  // И он победил...
             {
                 bm.win = false;
+                PlayerPrefs.SetInt("Level",
+                    PlayerPrefs.GetInt("Level", 1) + 1);                                                // При победе открыть следующий уровень
                 //Отыграть анимацию победы черепахи
             }
            else
