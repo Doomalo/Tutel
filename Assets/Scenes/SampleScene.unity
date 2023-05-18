@@ -750,7 +750,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.67, y: 147.56}
+  m_Size: {x: 1.67, y: 192}
   m_EdgeRadius: 0
 --- !u!212 &627208097
 SpriteRenderer:
@@ -811,7 +811,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 627208094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.823452, y: 5.1826687, z: 0}
+  m_LocalPosition: {x: 300, y: 64.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2274,6 +2274,7 @@ MonoBehaviour:
   - {fileID: 4514959142286604693, guid: e53b0a6d3988fca4492df2c56d5f77de, type: 3}
   - {fileID: 2295811281057615196, guid: 3890c137e40c81647861dc689186214f, type: 3}
   - {fileID: 6547573697354805605, guid: 334826e7c7b72e3478a35af1e40926c6, type: 3}
+  launcher: {fileID: 154288536}
 --- !u!1 &2076745138
 GameObject:
   m_ObjectHideFlags: 0

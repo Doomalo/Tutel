@@ -31,7 +31,6 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = Camera.main.nearClipPlane;
         worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
-        bunny.transform.position = worldPosition;
         bar += barSpeed;
         if (bar >= 100.0f||bar<=0.0f)
             barSpeed *= -1.0f;
