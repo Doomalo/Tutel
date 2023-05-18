@@ -8,8 +8,8 @@ public class TurtleMovement : MonoBehaviour
     public float gravity = 9.8f;
     public float maxY = 20.0f; // Объект движется между этими точками.
     public float minY = -4.5f;
-    public float reload = 100;// Пауза между ударами
-    private float reloading = 0;// Текущее время между ударами
+    public float reload = 1;// Пауза между ударами
+    public float reloading = 0;// Текущее время между ударами
     private bool flying = false;
     private bool flyingNow = false;
     public bool slam = false;
@@ -25,7 +25,7 @@ public class TurtleMovement : MonoBehaviour
             speedX *= 0.999f;                                                                // Замедление в полёте
             if (!flying)                                                                     // Если мы не летим (скорость меньше 40)
             {
-                if (Input.GetButtonDown("Fire1") && (slam == false))                             // Удар в пол
+                if (Input.GetButton("Fire1"))                             // Удар в пол
                 {
                     slam = true;
                     speedY = -30;

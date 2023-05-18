@@ -409,7 +409,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1330142565}
   - component: {fileID: 1330142564}
-  - component: {fileID: 1330142563}
   m_Layer: 0
   m_Name: "\u041A\u0430\u0442\u0430\u043F\u0443\u043B\u044C\u0442\u0430"
   m_TagString: Untagged
@@ -417,23 +416,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1330142563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1330142562}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b093ce90bde2124a8a15ab871b9592e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turtle: {fileID: 2089944327}
-  bunny: {fileID: 1845976166}
-  launchSpeed: 60
-  barSpeed: 1
-  bar: 0
 --- !u!212 &1330142564
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -815,6 +797,10 @@ PrefabInstance:
     - target: {fileID: 4741104973574056633, guid: 29f243f0ae86aca4a86a66074b8bdd61, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741104973574056635, guid: 29f243f0ae86aca4a86a66074b8bdd61, type: 3}
+      propertyPath: reload
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4741104973574056635, guid: 29f243f0ae86aca4a86a66074b8bdd61, type: 3}
       propertyPath: gravity
