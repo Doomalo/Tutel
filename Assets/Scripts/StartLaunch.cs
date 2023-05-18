@@ -44,6 +44,10 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
         tm.speedX = launchSpeed * strength*Mathf.Cos(direction);//Х = скорость катапульты*силу*направление !!!!!!!!!!!!!!!!!!!Возможно силу стоит убрать, т.к. bar и так влияет на направление, что и так влияет на силу
         tm.speedY = launchSpeed * strength * Mathf.Sin(direction);//Y = скорость катапульты*силу*направление !!!!!!!!!!!!!!!!!!!Возможно силу стоит убрать, т.к. bar и так влияет на направление, что и так влияет на силу
         StrengthBarImage.enabled = false;
+    }
 
+    public bool ReturnLaunchState()
+    {
+        return tm.isLaunched;
     }
 }
