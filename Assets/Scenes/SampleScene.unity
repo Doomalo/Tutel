@@ -1198,6 +1198,11 @@ MonoBehaviour:
     weight: 1
     minY: -4
     maxY: -3
+  - name: "\u041E\u0431\u043B\u0430\u043A\u043E"
+    prefab: {fileID: 6686070980900851947, guid: fd4e2b9adbd1b6346933532ebe9bd150, type: 3}
+    weight: 1
+    minY: 8
+    maxY: 50
   level2: []
   level3: []
   level4: []
