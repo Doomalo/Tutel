@@ -1183,6 +1183,21 @@ MonoBehaviour:
     weight: 1
     minY: -3.5
     maxY: 20
+  - name: 
+    prefab: {fileID: 3757953076022599555, guid: 20d044f71aef52a499207964dfa5f427, type: 3}
+    weight: 1
+    minY: -3.5
+    maxY: 20
+  - name: 
+    prefab: {fileID: 545660083343647776, guid: 217d75e6f690a7a4fbfd1fa31e2b4e50, type: 3}
+    weight: 1
+    minY: -3.5
+    maxY: 20
+  - name: 
+    prefab: {fileID: 6647424081838662252, guid: 47d1696ac9a808f49b3c8daf97aabb6d, type: 3}
+    weight: 1
+    minY: -3.5
+    maxY: 20
   level2: []
   level3: []
   level4: []
