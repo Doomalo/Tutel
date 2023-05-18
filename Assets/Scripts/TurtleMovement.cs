@@ -16,7 +16,7 @@ public class TurtleMovement : MonoBehaviour
     public bool slam = false;
     public bool isLaunched = false;
     public float flyingSpeed;
-    public float skyHight = 30.0f;
+    public float skyHight = 30.0f;                      // При переходе в полёт, мы взлетаем до этой высоты
 
     private bool boosterIsReady;
 

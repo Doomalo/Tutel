@@ -25,13 +25,13 @@ public class Parallax : MonoBehaviour
     void LateUpdate() 
     {
         Vector3 movementDelta = cameraTransform.position - lastCameraPosition;
-        transform.position += new Vector3 (movementDelta.x * parallaxEffect.x, movementDelta.y * parallaxEffect.y);
+        transform.position += new Vector3(movementDelta.x * parallaxEffect.x, movementDelta.y * parallaxEffect.y, 0);
         lastCameraPosition = cameraTransform.position;
 
         if (Mathf.Abs(cameraTransform.position.x - transform.position.x) >= textureSizeX) 
         {
             float offsetPostitionX = (cameraTransform.position.x - transform.position.x) % textureSizeX;
-            transform.position = new Vector3(cameraTransform.position.x + offsetPostitionX, transform.position.y);
+            transform.position = new Vector3(cameraTransform.position.x + offsetPostitionX, transform.position.y, transform.position.z);
         }
 
         /*// infinite tiling of textures for vertical parallax, not used here, just for the case;
