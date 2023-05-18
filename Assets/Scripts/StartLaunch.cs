@@ -14,7 +14,10 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
     public float barSpeed;
     public float bar = 0.0f;
     private float strength = 0.0f;
-    private float direction = 0.0f;
+    private Vector2 direction;
+
+    Vector3 worldPosition;
+
     void Start()
     {
         StrengthBarImage = GetComponent<Image>();
@@ -25,6 +28,10 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
 
     void FixedUpdate()
     {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = Camera.main.nearClipPlane;
+        worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
+        bunny.transform.position = worldPosition;
         bar += barSpeed;
         if (bar >= 100.0f||bar<=0.0f)
             barSpeed *= -1.0f;
@@ -38,12 +45,17 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
         //100-2*крайнее выдаёт 0, 100-0 выдаёт 100|Выдает 50 в крайних значениях и 0 в 50-и
         strength = (100.0f - 2.0f * Mathf.Abs(bar - 50.0f)) / 100.0f;
         strength = Mathf.Clamp01(strength);// Получили силу запуска в диапазоне от 0 до 1;
-        direction = bar / 10 * 9 * Mathf.PI / 180.0f;//Перевели шкалу в градусы, потом в радианы;
+        direction = worldPosition-turtle.transform.position;//Перевели шкалу в градусы, потом в радианы;
+        direction.Normalize();
         bm.enabled = true;
         tm.isLaunched = true;
-        tm.speedX = launchSpeed * strength*Mathf.Cos(direction);//Х = скорость катапульты*силу*направление !!!!!!!!!!!!!!!!!!!Возможно силу стоит убрать, т.к. bar и так влияет на направление, что и так влияет на силу
-        tm.speedY = launchSpeed * strength * Mathf.Sin(direction);//Y = скорость катапульты*силу*направление !!!!!!!!!!!!!!!!!!!Возможно силу стоит убрать, т.к. bar и так влияет на направление, что и так влияет на силу
+        tm.speedX = launchSpeed * strength;//Х = скорость катапульты*силу*направление !!!!!!!!!!!!!!!!!!!Возможно силу стоит убрать, т.к. bar и так влияет на направление, что и так влияет на силу
+        tm.speedY = launchSpeed * strength * direction.y/direction.x ;//Y = скорость катапульты*силу*направление !!!!!!!!!!!!!!!!!!!Возможно силу стоит убрать, т.к. bar и так влияет на направление, что и так влияет на силу
         StrengthBarImage.enabled = false;
+    }
 
+    public bool ReturnLaunchState()
+    {
+        return tm.isLaunched;
     }
 }
