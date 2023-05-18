@@ -4,13 +4,13 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -2143945475388203293
-    second: 1
+    second: "\u043F\u0442\u0438\u0446\u044B_0"
   - first:
       213: -5983914419955162889
-    second: 2
+    second: "\u043F\u0442\u0438\u0446\u044B_1"
   - first:
       213: -1045128173307864665
-    second: 3
+    second: "\u043F\u0442\u0438\u0446\u044B_2"
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1
+      name: "\u043F\u0442\u0438\u0446\u044B_0"
       rect:
         serializedVersion: 2
-        x: 50
-        y: 350
-        width: 402
-        height: 369
+        x: 484
+        y: 359
+        width: 391
+        height: 352
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,13 +121,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2
+      name: "\u043F\u0442\u0438\u0446\u044B_1"
       rect:
         serializedVersion: 2
-        x: 458
-        y: 347
-        width: 429
-        height: 372
+        x: 485
+        y: 2
+        width: 391
+        height: 352
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,13 +142,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3
+      name: "\u043F\u0442\u0438\u0446\u044B_2"
       rect:
         serializedVersion: 2
-        x: 47
-        y: 0
-        width: 417
-        height: 353
+        x: 71
+        y: 318
+        width: 405
+        height: 352
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
