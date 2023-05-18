@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class BoosterGenerator : MonoBehaviour
 {
-    public GameObject[] availableObjects;       // Создаваемые префабы
+    public BoosterObject[] availableObjects;       // Создаваемые префабы
     private float screenWidthInPoints;
 
     public List<GameObject> objects;            // Созданные на данный момент префабы (нужно для дальнейшего удаления)
 
     public float objectsMinDistance = 10.0f;
     public float objectsMaxDistance = 20.0f;
-
-    public float objectsMinY = -3.0f;
-    public float objectsMaxY = 20.0f;
-
 
     private void Start()
     {
@@ -32,11 +28,11 @@ public class BoosterGenerator : MonoBehaviour
         int randomIndex = Random.Range(0, availableObjects.Length);                                 //Переделать индекс под систему вероятности!!!!!!
 
         //2
-        GameObject obj = (GameObject)Instantiate(availableObjects[randomIndex]);
+        GameObject obj = (GameObject)Instantiate(availableObjects[randomIndex].prefab);
 
         //3
         float objectPositionX = lastObjectX + Random.Range(objectsMinDistance, objectsMaxDistance);
-        float randomY = Random.Range(objectsMinY, objectsMaxY);
+        float randomY = Random.Range(availableObjects[randomIndex].minY, availableObjects[randomIndex].maxY);
         obj.transform.position = new Vector3(objectPositionX, randomY, 0);
 
 

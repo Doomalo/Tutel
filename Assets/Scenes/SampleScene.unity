@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 154288539}
   - component: {fileID: 154288538}
   - component: {fileID: 154288540}
-  - component: {fileID: 154288541}
   m_Layer: 5
   m_Name: Strength
   m_TagString: Untagged
@@ -217,25 +216,6 @@ MonoBehaviour:
   launchSpeed: 60
   barSpeed: 1
   bar: 0
---- !u!95 &154288541
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 154288536}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 45c0162b3fc767044b2df2967bd99ea9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &183132337
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,12 +625,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableObjects:
+  - name: 
+    prefab: {fileID: 8616554046319065003, guid: f826b5aac049d7d4d9386b11cff3cc82, type: 3}
+    weight: 1
+    minY: -3.5
+    maxY: 20
+  - name: 
+    prefab: {fileID: 8616554046319065003, guid: f826b5aac049d7d4d9386b11cff3cc82, type: 3}
+    weight: 1
+    minY: -3.5
+    maxY: 20
+  objects:
   - {fileID: 8616554046319065003, guid: f826b5aac049d7d4d9386b11cff3cc82, type: 3}
-  objects: []
   objectsMinDistance: 10
   objectsMaxDistance: 20
-  objectsMinY: -3
-  objectsMaxY: 20
 --- !u!1 &1845976166 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6807288038225501044, guid: e836d855f52ba144db9f672d96a06669, type: 3}
