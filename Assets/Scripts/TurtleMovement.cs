@@ -16,9 +16,13 @@ public class TurtleMovement : MonoBehaviour
     public bool slam = false;
     public bool isLaunched = false;
     public float flyingSpeed;
-    public float skyHight = 10.0f;
+    public float skyHight = 30.0f;                      // При переходе в полёт, мы взлетаем до этой высоты
+
+    private bool boosterIsReady;
 
     public bool win = true;
+
+    public float timer = -1.0f;
 
     void Start()
     {
@@ -28,21 +32,23 @@ public class TurtleMovement : MonoBehaviour
         _anim.SetBool("is_falling", false);
     }
 
-        void FixedUpdate()
+    void FixedUpdate()
     {
+        if (timer == 0)
+            speedX-= PlayerPrefs.GetInt("Booster");
+        timer -= Time.deltaTime;
 
         if (isLaunched)
         {
             _anim.SetBool("launched", true);
             reloading++;                                                                     // Тики перезарядки
             transform.Translate(speedX / 100.0f, speedY / 100.0f, 0);                        // Само перемещение
-            speedX *= 0.999f;                                                                // Замедление в полёте
+            speedX *= 0.9995f;                                                                // Замедление в полёте
             if (!flying)                                                                     // Если мы не летим (скорость меньше 40)
             {
                 _anim.SetBool("high_enough", false);
                 _anim.SetBool("is_falling", true);
-                if (Input.GetButton("Fire1"))                             // Удар в пол
-
+                if (Input.GetButton("Fire1"))                             // Удар в полёте
                 {
                     slam = true;
                     speedY = -30;
@@ -61,21 +67,27 @@ public class TurtleMovement : MonoBehaviour
                 if (speedX > 40)
                 {// Если ушли в +40 скорость, то взлетаем
                     _anim.SetBool("is_falling", false);
-                  //  Debug.Log("false");
+                    //  Debug.Log("false");
                     flyingNow = true;
                 }
             }
             else if (flying)
             {
-                //_anim.SetBool("is_falling", false);
+                _anim.SetBool("is_falling", false);
                 speedY = 0;                                                                     //Во время полёта мы не падаем
-                if (Input.GetButton("Fire1"))                                                   //Полёт вверх на ЛКМ  ЗАМЕНИТЬ НА КНОПКИ!!!!!!!!!
+                if (Input.GetKey(KeyCode.UpArrow))                                                   //Полёт вверх на ЛКМ  ЗАМЕНИТЬ НА КНОПКИ!!!!!!!!!
                 {
                     transform.Translate(0, flyingSpeed / 100.0f, 0);
                 }
-                if (Input.GetButton("Fire2"))                                                   //Полёт вниз на ПКМ  ЗАМЕНИТЬ НА КНОПКИ !!!!!!!!!!!!!!
+                if (Input.GetKey(KeyCode.DownArrow))                                                  //Полёт вниз на ПКМ  ЗАМЕНИТЬ НА КНОПКИ !!!!!!!!!!!!!!
                 {
                     transform.Translate(0, -flyingSpeed / 100.0f, 0);
+                }
+                if (Input.GetButton("Fire1") && boosterIsReady) 
+                {
+                    boosterIsReady = false;
+                    speedX += PlayerPrefs.GetInt("Booster");
+                    timer = PlayerPrefs.GetInt("BoosterTime");
                 }
                 if (speedX < 40)                                                                // Если ушли в <40 скорость, то падаем
                     flying = false;
@@ -97,6 +109,7 @@ public class TurtleMovement : MonoBehaviour
 
     public void Defeat()
     {
+                                                                                                    // При поражении открывать меню смерти + проигрывать анимацию
 
     }
 }

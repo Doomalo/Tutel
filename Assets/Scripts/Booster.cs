@@ -19,9 +19,16 @@ public class Booster : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
+
+
         anim.SetTrigger("OnTrigger");
+
+
+
         if (other.transform.CompareTag("Player"))                                                       // Если заколайдилось с игроком
         {
             tm = other.gameObject.GetComponent<TurtleMovement>();                                       // Получаем компонент скрипта на бег черепахи
