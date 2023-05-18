@@ -13,9 +13,15 @@ public class Booster : MonoBehaviour
     public float YValue; // Установить в -1 для того, чтобы эта переменная не изменялась
     public Type type;
     private TurtleMovement tm;
+    private Animator anim;
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        anim.SetTrigger("OnTrigger");
         if (other.transform.CompareTag("Player"))                                                       // Если заколайдилось с игроком
         {
             tm = other.gameObject.GetComponent<TurtleMovement>();                                       // Получаем компонент скрипта на бег черепахи
