@@ -67,12 +67,6 @@ public class TurtleMovement : MonoBehaviour
             {
                 _anim.SetBool("high_enough", false);
                 _anim.SetBool("is_falling", true);
-                if (Input.GetButton("Fire1")&&(slamReloading>slamReloadTime)&&(!slam))                             // Удар в полёте
-                {
-                    slamReloading = 0;
-                    slam = true;
-                    speedY = -30;
-                }
                 speedY -= gravity;
                 if (transform.position.y < minY && ((reloading > reload) || (slam == true))) //Если позиция = земля и одно из двух: перезарядка закончилась или мы слэмим землю
                 {
@@ -98,13 +92,6 @@ public class TurtleMovement : MonoBehaviour
                 {
                     transform.Translate(0, -flyingSpeed / 100.0f, 0);
                 }
-                if (Input.GetButton("Fire1") && boosterIsReady) 
-                {
-                    boosterIsReady = false;
-                    speedX += PlayerPrefs.GetInt("Booster");
-                    timer = PlayerPrefs.GetInt("BoosterTime");
-                    Debug.Log("Booster Activated");
-                }
                 if (speedX < 40)                                                                // Если ушли в <40 скорость, то падаем
                     flying = false;
             }
@@ -126,6 +113,29 @@ public class TurtleMovement : MonoBehaviour
     public void FlyDownRelease()
     {
         flyDown = false;
+    }
+
+    public void SlamButton()
+    {
+        if (!flying)                                                                     // Если мы не летим (скорость меньше 40)
+        {
+            if ((slamReloading > slamReloadTime) && (!slam))                             // Удар в полёте
+            {
+                slamReloading = 0;
+                slam = true;
+                speedY = -30;
+            }
+        }
+        else
+        {
+            if (boosterIsReady)
+            {
+                boosterIsReady = false;
+                speedX += PlayerPrefs.GetInt("Booster");
+                timer = PlayerPrefs.GetInt("BoosterTime");
+                Debug.Log("Booster Activated");
+            }
+        }
     }
 
     void FlyingNowCheck()
