@@ -7,7 +7,7 @@ public class TurtleMovement : MonoBehaviour
     public float speedY = 0.0f; //сменить на приват
     public float maxSpeed = 200.0f;
     public float gravity = 9.8f;
-    public float maxY = 20.0f; // Объект движется между этими точками.
+    public float maxY = 50.0f; // Объект движется между этими точками.
     public float minY = -4.5f;
     public float reload = 1;// Пауза между ударами
     private float reloading = 0;// Текущее время между ударами
@@ -28,7 +28,6 @@ public class TurtleMovement : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip fall;
-    //public bool win = true;
 
     public float timer = -1.0f;
 
@@ -55,24 +54,18 @@ public class TurtleMovement : MonoBehaviour
             _anim.SetBool("launched", true);
             reloading++;
             slamReloading++;// Тики перезарядки
+            if(!flyingNow)
             transform.Translate(speedX / 100.0f, speedY / 100.0f, 0);                        // Само перемещение
             speedX *= 0.9995f;                                                                // Замедление в полёте
             if (speedX > 40)
             {// Если ушли в +40 скорость, то взлетаем
                 _anim.SetBool("is_falling", false);
-                //  Debug.Log("false");
                 flyingNow = true;
             }
             if (!flying)                                                                     // Если мы не летим (скорость меньше 40)
             {
                 _anim.SetBool("high_enough", false);
                 _anim.SetBool("is_falling", true);
-                if (Input.GetButton("Fire1")&&(slamReloading>slamReloadTime)&&(!slam))                             // Удар в полёте
-                {
-                    slamReloading = 0;
-                    slam = true;
-                    speedY = -30;
-                }
                 speedY -= gravity;
                 if (transform.position.y < minY && ((reloading > reload) || (slam == true))) //Если позиция = земля и одно из двух: перезарядка закончилась или мы слэмим землю
                 {
@@ -98,13 +91,6 @@ public class TurtleMovement : MonoBehaviour
                 {
                     transform.Translate(0, -flyingSpeed / 100.0f, 0);
                 }
-                if (Input.GetButton("Fire1") && boosterIsReady) 
-                {
-                    boosterIsReady = false;
-                    speedX += PlayerPrefs.GetInt("Booster");
-                    timer = PlayerPrefs.GetInt("BoosterTime");
-                    Debug.Log("Booster Activated");
-                }
                 if (speedX < 40)                                                                // Если ушли в <40 скорость, то падаем
                     flying = false;
             }
@@ -114,6 +100,8 @@ public class TurtleMovement : MonoBehaviour
     public void FlyUpPress()
     {
          flyUp = true;
+        if (transform.position.y > maxY)
+            flyUp = false;
     }
     public void FlyUpRelease()
     {
@@ -128,6 +116,29 @@ public class TurtleMovement : MonoBehaviour
         flyDown = false;
     }
 
+    public void SlamButton()
+    {
+        if (!flying)                                                                     // Если мы не летим (скорость меньше 40)
+        {
+            if ((slamReloading > slamReloadTime) && (!slam))                             // Удар в полёте
+            {
+                slamReloading = 0;
+                slam = true;
+                speedY = -30;
+            }
+        }
+        else
+        {
+            if (boosterIsReady)
+            {
+                boosterIsReady = false;
+                speedX += PlayerPrefs.GetInt("Booster");
+                timer = PlayerPrefs.GetInt("BoosterTime");
+                Debug.Log("Booster Activated");
+            }
+        }
+    }
+
     void FlyingNowCheck()
     {
         if (flyingNow)                                                                       //Перед стадией полёта, у нас стадия взлёта до момента неба
@@ -135,7 +146,7 @@ public class TurtleMovement : MonoBehaviour
             _anim.SetBool("is_falling", false);
             _anim.SetBool("high_enough", true);
             if (transform.position.y < skyHight)
-                transform.Translate(10.0f / 100.0f, 20.0f / 100.0f, 0);
+                transform.Translate(speedX / 100.0f, 50.0f / 100.0f, 0);
             else
             {
                 flyingNow = false;

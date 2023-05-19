@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u0417\u0430\u044F\u0446 3"
       objectReference: {fileID: 0}
+    - target: {fileID: 6807288038225501044, guid: e836d855f52ba144db9f672d96a06669, type: 3}
+      propertyPath: m_TagString
+      value: Bunny
+      objectReference: {fileID: 0}
     - target: {fileID: 6807288038225501045, guid: e836d855f52ba144db9f672d96a06669, type: 3}
       propertyPath: m_Sprite
       value: 

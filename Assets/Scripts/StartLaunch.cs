@@ -48,7 +48,7 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
         this.gameObject.GetComponent<AudioSource>().PlayOneShot(platformSounds[num]);
         //100-2*крайнее выдаёт 0, 100-0 выдаёт 100|Выдает 50 в крайних значениях и 0 в 50-и
         Vector2 dirVector;
-        strength = (100.0f - 2.0f * Mathf.Abs(bar - 50.0f)) / 100.0f;
+        strength = bar / 100.0f;
         strength = Mathf.Clamp01(strength);// Получили силу запуска в диапазоне от 0 до 1;
         dirVector = -turtle.transform.position + worldPosition;
          directionAng = Vector2.Angle(Vector2.right, dirVector);//Перевели шкалу в градусы, потом в радианы;
