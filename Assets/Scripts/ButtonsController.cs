@@ -20,13 +20,27 @@ public class ButtonsController : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void RestartLevel()
+    public void StartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void GoToShop()
     {
         SceneManager.LoadScene("Shop");
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+    public void Settings()
+    {
+
+    }
+    public void StartArcade()
+    {
+        PlayerPrefs.SetInt("Arcade", 1);
+        SceneManager.LoadScene("SampleScene");
     }
 }
