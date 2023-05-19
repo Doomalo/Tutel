@@ -10,6 +10,11 @@ public class Finish : MonoBehaviour
     private Animator bunnyAnim;
     private BunnyMovement bm;
     private TurtleMovement tm;
+    private bool turtleWin;
+    private bool bunnyWin;
+    private bool result1 = false; //заяц выиграл
+    private bool result2 = false;   //черепаха выиграла
+    private AudioSource bunnySound;
 
     private void Start()
     {
@@ -17,37 +22,47 @@ public class Finish : MonoBehaviour
         bm = bunny.GetComponent<BunnyMovement>();
         turtleAnim = turtle.GetComponent<Animator>();
         bunnyAnim = bunny.GetComponent<Animator>();
+        bunnySound = bunny.GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        bunnySound.Stop();
         if (other.transform.CompareTag("Player"))                                                       // Если заколайдилось с игроком
         {
-           if (tm.win)                                                                                  // И он победил...
-            {
-                bm.win = false;
-                PlayerPrefs.SetInt("Level",
-                    PlayerPrefs.GetInt("Level", 1) + 1);                                                // При победе открыть следующий уровень
-                //Отыграть анимацию победы черепахи
-            }
-           else
-            {
-                //Отыграть анимацию поражения черепахи
-            }
+            turtleWin = true;
+            bunnyWin = false;
         }
         else if (other.transform.CompareTag("Bunny"))                                                   // Если заколайдилось с зайцем
         {
-            if (bm.win)                                                                                 // И он победил
-            {
-                tm.win = false;
-                //Отыграть победную анимацию зайца
-            }
-            else
-            {
-                // Отыграть анимацию поражения зайца
-            }
-            
+            turtleWin = false;
+            bunnyWin = true;
         }
 
+
+        if (turtleWin && !bunnyWin)
+        {
+            result2 = true;
+            bm.SetSpeed(0.0f);
+            turtleAnim.SetInteger("win", 1);
+            bunnyAnim.SetInteger("win", 0);
+        }
+        else if (!(turtleWin && !bunnyWin))
+        {
+            result1 = true;
+            bm.SetSpeed(0.0f);
+            turtleAnim.SetInteger("win", 0);
+            bunnyAnim.SetInteger("win", 1);
+        }
+    }
+
+    public bool ReturnResult1()
+    {
+        return result1;
+    }
+
+    public bool ReturnResult2()
+    {
+        return result2;
     }
 }
