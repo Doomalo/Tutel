@@ -20,7 +20,7 @@ public class TurtleMovement : MonoBehaviour
 
     private bool boosterIsReady;
 
-    public bool win = true;
+    //public bool win = true;
 
     public float timer = -1.0f;
 

@@ -10,6 +10,8 @@ public class Finish : MonoBehaviour
     private Animator bunnyAnim;
     private BunnyMovement bm;
     private TurtleMovement tm;
+    private bool turtleWin;
+    private bool bunnyWin;
 
     private void Start()
     {
@@ -23,31 +25,24 @@ public class Finish : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))                                                       // Если заколайдилось с игроком
         {
-           if (tm.win)                                                                                  // И он победил...
-            {
-                bm.win = false;
-                PlayerPrefs.SetInt("Level",
-                    PlayerPrefs.GetInt("Level", 1) + 1);                                                // При победе открыть следующий уровень
-                //Отыграть анимацию победы черепахи
-            }
-           else
-            {
-                //Отыграть анимацию поражения черепахи
-            }
+            turtleWin = true;
+            bunnyWin = false;
         }
         else if (other.transform.CompareTag("Bunny"))                                                   // Если заколайдилось с зайцем
         {
-            if (bm.win)                                                                                 // И он победил
-            {
-                tm.win = false;
-                //Отыграть победную анимацию зайца
-            }
-            else
-            {
-                // Отыграть анимацию поражения зайца
-            }
-            
+            turtleWin = false;
+            bunnyWin = true;  
         }
 
+        if (turtleWin && !bunnyWin)
+        {
+            turtleAnim.SetInteger("win", 1);
+            bunnyAnim.SetInteger("win", 0);
+        }
+        else
+        {
+            turtleAnim.SetInteger("win", 0);
+            bunnyAnim.SetInteger("win", 1);
+        }
     }
 }
