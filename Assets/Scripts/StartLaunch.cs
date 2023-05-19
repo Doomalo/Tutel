@@ -16,6 +16,8 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
     private float strength = 0.0f;
     private float directionAng;
 
+    public List<AudioClip> platformSounds;
+
     Vector3 worldPosition;
 
     void Start()
@@ -42,6 +44,8 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
     }
     void Launch()
     {
+        int num = DataController.platformNum;
+        this.gameObject.GetComponent<AudioSource>().PlayOneShot(platformSounds[num]);
         //100-2*крайнее выдаёт 0, 100-0 выдаёт 100|Выдает 50 в крайних значениях и 0 в 50-и
         Vector2 dirVector;
         strength = (100.0f - 2.0f * Mathf.Abs(bar - 50.0f)) / 100.0f;
