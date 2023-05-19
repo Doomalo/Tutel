@@ -43,4 +43,9 @@ public class ButtonsController : MonoBehaviour
         PlayerPrefs.SetInt("Arcade", 1);
         SceneManager.LoadScene("SampleScene");
     }
+
+    public void ArrowUp()
+    {
+       // Input.
+    }    
 }
