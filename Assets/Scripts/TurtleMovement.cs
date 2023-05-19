@@ -104,20 +104,24 @@ public class TurtleMovement : MonoBehaviour
                 if (speedX < 40)                                                                // Если ушли в <40 скорость, то падаем
                     flying = false;
             }
-            
-            flyUp = false;
-            flyDown = false;
         }
     }
 
-    public void FlyUp()
+    public void FlyUpPress()
     {
-        transform.Translate(0, flyingSpeed / 100.0f, 0);
-        // flyUp = true;
+         flyUp = true;
+    }
+    public void FlyUpRelease()
+    {
+        flyUp = false;
     }
     public void FlyDown()
     {
         flyDown = true;
+    }
+    public void FlyDownRelease()
+    {
+        flyDown = false;
     }
 
     void FlyingNowCheck()
