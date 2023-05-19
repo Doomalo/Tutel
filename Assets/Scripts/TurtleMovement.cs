@@ -109,7 +109,7 @@ public class TurtleMovement : MonoBehaviour
 
     public void Defeat()
     {
-                                                                                                    // При поражении открывать меню смерти + проигрывать анимацию
-
+        // При поражении открывать меню смерти + проигрывать анимацию
+        Destroy(this);
     }
 }
