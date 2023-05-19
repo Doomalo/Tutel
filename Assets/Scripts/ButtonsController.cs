@@ -24,4 +24,9 @@ public class ButtonsController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void GoToShop()
+    {
+        SceneManager.LoadScene("Shop");
+    }
 }
