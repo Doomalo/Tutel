@@ -12,12 +12,18 @@ public class ButtonsController : MonoBehaviour
     {
         pauseCanvas.gameObject.SetActive(true);
         Time.timeScale = 0;
+        AudioSource[] audios = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource a in audios)
+            a.Pause();
     }
 
     public void ResumeButton()
     {
         pauseCanvas.gameObject.SetActive(false);
         Time.timeScale = 1;
+        AudioSource[] audios = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource a in audios)
+            a.Play();
     }
 
     public void StartLevel()
@@ -43,9 +49,4 @@ public class ButtonsController : MonoBehaviour
         PlayerPrefs.SetInt("Arcade", 1);
         SceneManager.LoadScene("SampleScene");
     }
-
-    public void ArrowUp()
-    {
-       // Input.
-    }    
 }
