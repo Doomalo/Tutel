@@ -6926,6 +6926,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6298596774202948673, guid: 293fb8bf94640044d849b11e9bc61f1d, type: 3}
     - target: {fileID: 4741104973574056635, guid: 29f243f0ae86aca4a86a66074b8bdd61, type: 3}
+      propertyPath: fall
+      value: 
+      objectReference: {fileID: 8300000, guid: c49ec0b87d5192447861c4a781ccf7b5, type: 3}
+    - target: {fileID: 4741104973574056635, guid: 29f243f0ae86aca4a86a66074b8bdd61, type: 3}
       propertyPath: maxY
       value: 50
       objectReference: {fileID: 0}
@@ -7050,6 +7054,10 @@ PrefabInstance:
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6807288038225501051, guid: e836d855f52ba144db9f672d96a06669, type: 3}
+      propertyPath: finish
+      value: 
+      objectReference: {fileID: 627208095}
     - target: {fileID: 6807288038225501051, guid: e836d855f52ba144db9f672d96a06669, type: 3}
       propertyPath: rabbitSkins.Array.size
       value: 4

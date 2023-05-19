@@ -10,8 +10,8 @@ public class Finish : MonoBehaviour
     private Animator bunnyAnim;
     private BunnyMovement bm;
     private TurtleMovement tm;
-    private bool turtleWin;
-    private bool bunnyWin;
+    private bool turtleWin = false;
+    private bool bunnyWin = false;
     private AudioSource bunnySound;
 
     private void Start()
@@ -42,7 +42,7 @@ public class Finish : MonoBehaviour
             turtleAnim.SetInteger("win", 1);
             bunnyAnim.SetInteger("win", 0);
         }
-        else
+        else if (!turtleWin && bunnyWin)
         {
             turtleAnim.SetInteger("win", 0);
             bunnyAnim.SetInteger("win", 1);
