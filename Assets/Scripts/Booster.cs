@@ -25,12 +25,13 @@ public class Booster : MonoBehaviour
     {
 
 
-        anim.SetTrigger("OnTrigger");
+        
 
 
 
         if (other.transform.CompareTag("Player"))                                                       // Если заколайдилось с игроком
         {
+            anim.SetTrigger("OnTrigger");
             tm = other.gameObject.GetComponent<TurtleMovement>();                                       // Получаем компонент скрипта на бег черепахи
             tm.slam = false;                                                                            // Отключаем падение если оно было
             if (type == Type.AddForce)                                                                  // Добавляем параметры

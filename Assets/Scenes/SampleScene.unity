@@ -1148,7 +1148,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 240749462}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2089944332}
+        m_TargetAssemblyTypeName: TurtleMovement, Assembly-CSharp
+        m_MethodName: FlyDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &240749462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2219,7 +2231,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 679858112}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2089944332}
+        m_TargetAssemblyTypeName: TurtleMovement, Assembly-CSharp
+        m_MethodName: FlyUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &679858112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5319,8 +5343,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6298596774202948673, guid: 293fb8bf94640044d849b11e9bc61f1d, type: 3}
     - target: {fileID: 4741104973574056635, guid: 29f243f0ae86aca4a86a66074b8bdd61, type: 3}
+      propertyPath: speedX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741104973574056635, guid: 29f243f0ae86aca4a86a66074b8bdd61, type: 3}
+      propertyPath: speedY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741104973574056635, guid: 29f243f0ae86aca4a86a66074b8bdd61, type: 3}
       propertyPath: gravity
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4741104973574056635, guid: 29f243f0ae86aca4a86a66074b8bdd61, type: 3}
       propertyPath: flyingSpeed

@@ -10,15 +10,21 @@ public class TurtleMovement : MonoBehaviour
     public float maxY = 20.0f; // Объект движется между этими точками.
     public float minY = -4.5f;
     public float reload = 1;// Пауза между ударами
-    public float reloading = 0;// Текущее время между ударами
-    private bool flying = false;
-    private bool flyingNow = false;
+    private float reloading = 0;// Текущее время между ударами
+    public bool flying = false;
+    public bool flyingNow = false;
     public bool slam = false;
     public bool isLaunched = false;
     public float flyingSpeed;
     public float skyHight = 30.0f;                      // При переходе в полёт, мы взлетаем до этой высоты
+    public float slamReloadTime= 50;
+    private float slamReloading = 0;
 
-    private bool boosterIsReady;
+
+    private bool flyUp;
+    private bool flyDown;
+    public bool timerExpired = false;
+    public bool boosterIsReady = true;
 
     //public bool win = true;
 
@@ -34,22 +40,33 @@ public class TurtleMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (timer == 0)
-            speedX-= PlayerPrefs.GetInt("Booster");
+        if (timer == 0 && !boosterIsReady && !timerExpired)         // Условие, что по истечению таймера, от нас отнимут скорость
+        {
+            speedX -= PlayerPrefs.GetInt("Booster");
+            timerExpired = true;
+        }
         timer -= Time.deltaTime;
-
+        FlyingNowCheck();
         if (isLaunched)
         {
             _anim.SetBool("launched", true);
-            reloading++;                                                                     // Тики перезарядки
+            reloading++;
+            slamReloading++;// Тики перезарядки
             transform.Translate(speedX / 100.0f, speedY / 100.0f, 0);                        // Само перемещение
             speedX *= 0.9995f;                                                                // Замедление в полёте
+            if (speedX > 40)
+            {// Если ушли в +40 скорость, то взлетаем
+                _anim.SetBool("is_falling", false);
+                //  Debug.Log("false");
+                flyingNow = true;
+            }
             if (!flying)                                                                     // Если мы не летим (скорость меньше 40)
             {
                 _anim.SetBool("high_enough", false);
                 _anim.SetBool("is_falling", true);
-                if (Input.GetButton("Fire1"))                             // Удар в полёте
+                if (Input.GetButton("Fire1")&&(slamReloading>slamReloadTime)&&(!slam))                             // Удар в полёте
                 {
+                    slamReloading = 0;
                     slam = true;
                     speedY = -30;
                 }
@@ -64,22 +81,16 @@ public class TurtleMovement : MonoBehaviour
                     if (speedX < 0)                                                           // Если ушли в отрицательную скорость, конец игры !!!!!!!!!!!!!!!!!!!!!!!!!
                         Defeat();
                 }
-                if (speedX > 40)
-                {// Если ушли в +40 скорость, то взлетаем
-                    _anim.SetBool("is_falling", false);
-                    //  Debug.Log("false");
-                    flyingNow = true;
-                }
             }
             else if (flying)
             {
                 _anim.SetBool("is_falling", false);
                 speedY = 0;                                                                     //Во время полёта мы не падаем
-                if (Input.GetKey(KeyCode.UpArrow))                                                   //Полёт вверх на ЛКМ  ЗАМЕНИТЬ НА КНОПКИ!!!!!!!!!
+                if (flyUp)                                                   //Полёт вверх на ЛКМ  ЗАМЕНИТЬ НА КНОПКИ!!!!!!!!!
                 {
                     transform.Translate(0, flyingSpeed / 100.0f, 0);
                 }
-                if (Input.GetKey(KeyCode.DownArrow))                                                  //Полёт вниз на ПКМ  ЗАМЕНИТЬ НА КНОПКИ !!!!!!!!!!!!!!
+                if (flyDown)                                                  //Полёт вниз на ПКМ  ЗАМЕНИТЬ НА КНОПКИ !!!!!!!!!!!!!!
                 {
                     transform.Translate(0, -flyingSpeed / 100.0f, 0);
                 }
@@ -88,21 +99,39 @@ public class TurtleMovement : MonoBehaviour
                     boosterIsReady = false;
                     speedX += PlayerPrefs.GetInt("Booster");
                     timer = PlayerPrefs.GetInt("BoosterTime");
+                    Debug.Log("Booster Activated");
                 }
                 if (speedX < 40)                                                                // Если ушли в <40 скорость, то падаем
                     flying = false;
             }
-            if (flyingNow)                                                                       //Перед стадией полёта, у нас стадия взлёта до момента неба
+            
+            flyUp = false;
+            flyDown = false;
+        }
+    }
+
+    public void FlyUp()
+    {
+        transform.Translate(0, flyingSpeed / 100.0f, 0);
+        // flyUp = true;
+    }
+    public void FlyDown()
+    {
+        flyDown = true;
+    }
+
+    void FlyingNowCheck()
+    {
+        if (flyingNow)                                                                       //Перед стадией полёта, у нас стадия взлёта до момента неба
+        {
+            _anim.SetBool("is_falling", false);
+            _anim.SetBool("high_enough", true);
+            if (transform.position.y < skyHight)
+                transform.Translate(10.0f / 100.0f, 20.0f / 100.0f, 0);
+            else
             {
-                _anim.SetBool("is_falling", false);
-                _anim.SetBool("high_enough", true);
-                if (transform.position.y < skyHight)
-                    transform.Translate(10.0f / 100.0f, 20.0f / 100.0f, 0);
-                else
-                {
-                    flyingNow = false;
-                    flying = true;
-                }
+                flyingNow = false;
+                flying = true;
             }
         }
     }

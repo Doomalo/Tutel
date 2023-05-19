@@ -14,7 +14,7 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
     public float barSpeed;
     public float bar = 0.0f;
     private float strength = 0.0f;
-    private Vector2 direction;
+    private float directionAng;
 
     Vector3 worldPosition;
 
@@ -31,6 +31,7 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = Camera.main.nearClipPlane;
         worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
+       //bunny.transform.position = worldPosition;
         bar += barSpeed;
         if (bar >= 100.0f||bar<=0.0f)
             barSpeed *= -1.0f;
@@ -42,14 +43,17 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
     void Launch()
     {
         //100-2*крайнее выдаёт 0, 100-0 выдаёт 100|Выдает 50 в крайних значениях и 0 в 50-и
+        Vector2 dirVector;
         strength = (100.0f - 2.0f * Mathf.Abs(bar - 50.0f)) / 100.0f;
         strength = Mathf.Clamp01(strength);// Получили силу запуска в диапазоне от 0 до 1;
-        direction = worldPosition-turtle.transform.position;//Перевели шкалу в градусы, потом в радианы;
-        direction.Normalize();
+        dirVector = -turtle.transform.position + worldPosition;
+         directionAng = Vector2.Angle(Vector2.right, dirVector);//Перевели шкалу в градусы, потом в радианы;
         bm.enabled = true;
         tm.isLaunched = true;
-        tm.speedX = launchSpeed * strength;//Х = скорость катапульты*силу*направление !!!!!!!!!!!!!!!!!!!Возможно силу стоит убрать, т.к. bar и так влияет на направление, что и так влияет на силу
-        tm.speedY = launchSpeed * strength * direction.y/direction.x ;//Y = скорость катапульты*силу*направление !!!!!!!!!!!!!!!!!!!Возможно силу стоит убрать, т.к. bar и так влияет на направление, что и так влияет на силу
+        tm.speedX = launchSpeed * strength;
+        tm.speedY = launchSpeed * strength * Mathf.Clamp(
+            Mathf.Tan(Mathf.Deg2Rad * directionAng),
+            - 1, 1);                                                    //Y = скорость катапульты*силу*направление 
         StrengthBarImage.enabled = false;
     }
 
