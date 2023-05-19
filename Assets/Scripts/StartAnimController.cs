@@ -17,6 +17,7 @@ public class StartAnimController : MonoBehaviour
     [SerializeField] private GameObject speedBar;
     private StartLaunch _launcher;
     private Animator _anim;
+    private AudioSource audioSource;
     //private int platformNum = 0;
     private bool isLaunched = false;
     //private bool platformSet = false;
@@ -35,6 +36,7 @@ public class StartAnimController : MonoBehaviour
         platforms[num].SetActive(true);
         _anim = platforms[num].GetComponent<Animator>();
         _anim.SetBool("start", false);
+        audioSource = platforms[num].GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,6 +51,7 @@ public class StartAnimController : MonoBehaviour
         if( isLaunched == true)
         {
             _anim.SetBool("start", true);
+            audioSource.Play();
         }
     }
 

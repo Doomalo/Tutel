@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class BunnyMovement : MonoBehaviour
 {
-    public float speed;
+    public float speed = 10.0f;
     private Animator anim;
-    public bool win = true;
+    private AudioSource audioSource;
+    public AudioClip laugh;
     void Start()
     {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(laugh);
+        audioSource.Play();
     }
     void FixedUpdate()
     {
-        anim.SetBool("isMove", true);
-        transform.Translate(speed / 100.0f, 0, 0);           //Заяц просто ходит с определённой скоростью, можно добавить проверку на финиш потом
-        Finished();
+        if (speed > 0)
+        {
+            anim.SetBool("isMove", true);
+            transform.Translate(speed / 100.0f, 0, 0);           //Заяц просто ходит с определённой скоростью, можно добавить проверку на финиш потом
+        }
     }
-    void Finished()
+
+    public void SetSpeed(float sp)
     {
-        if (win == true)
-            anim.SetBool("isWin", true);
-        else anim.SetBool("isWin", false);
+        this.speed = sp;
     }
 }

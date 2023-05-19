@@ -82,7 +82,7 @@ public class BoosterGenerator : MonoBehaviour
             farthestObjectX = Mathf.Max(farthestObjectX, objX);
 
             //5
-            if (objX < removeObjectsX )//|| obj.gameObject.tag == "DestroyThis") 
+            if ((objX < removeObjectsX )|| (obj.gameObject.tag == "DestroyThis")/*||(farthestObjectX>addObjectX*1.3)*/)
                 objectsToRemove.Add(obj);
         }
 
