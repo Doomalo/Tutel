@@ -35,7 +35,7 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
         if (bar >= 100.0f||bar<=0.0f)
             barSpeed *= -1.0f;
         StrengthBarImage.fillAmount = bar / 100.0f ;/// 100.0f;
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButton("Fire1"))
             if (!tm.isLaunched)
                 Launch();
     }
