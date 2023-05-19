@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CloudRandomizer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    private SpriteRenderer sr;
+    public Sprite[] sprites;
+
+    private void Start()
     {
-        
+        sr = gameObject.GetComponent<SpriteRenderer>();
+        int id = Random.Range(0, sprites.Length);
+        sr.sprite = sprites[id];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
