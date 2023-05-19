@@ -17,22 +17,23 @@ public class Parallax : MonoBehaviour
         lastCameraPosition = cameraTransform.position;
         Sprite sprite = GetComponent<SpriteRenderer>().sprite;
         Texture2D texture = sprite.texture;
-        textureSizeX = texture.width / sprite.pixelsPerUnit;
+        textureSizeX = texture.width/  sprite.pixelsPerUnit;
+        //Debug.Log(texture.width);
         // textureSizeY = texture.height / sprite.pixelsPerUnit; // infinite tiling of textures for vertical parallax, not used here, just for the case;
     }
 
     // Do not use FixedUpdate, cause it will lag badly;
-    void LateUpdate() 
+    void Update() 
     {
         Vector3 movementDelta = cameraTransform.position - lastCameraPosition;
         transform.position += new Vector3(movementDelta.x * parallaxEffect.x, movementDelta.y * parallaxEffect.y, 0);
         lastCameraPosition = cameraTransform.position;
 
-        if (Mathf.Abs(cameraTransform.position.x - transform.position.x) >= textureSizeX) 
-        {
-            float offsetPostitionX = (cameraTransform.position.x - transform.position.x) % textureSizeX;
-            transform.position = new Vector3(cameraTransform.position.x + offsetPostitionX, transform.position.y, transform.position.z);
-        }
+        //if (Mathf.Abs(cameraTransform.position.x - transform.position.x) >= textureSizeX) 
+        //{
+        //    float offsetPostitionX = (cameraTransform.position.x - transform.position.x) % textureSizeX;
+        //    transform.position = new Vector3(cameraTransform.position.x + offsetPostitionX, transform.position.y, transform.position.z);
+        //}
 
         /*// infinite tiling of textures for vertical parallax, not used here, just for the case;
         if (Mathf.Abs(cameraTransform.position.y - transform.position.y) >= textureSizeY)
