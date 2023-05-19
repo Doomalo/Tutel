@@ -2244,7 +2244,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 627303462}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2089944332}
+        m_TargetAssemblyTypeName: TurtleMovement, Assembly-CSharp
+        m_MethodName: SlamButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &627303462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4802,7 +4814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1680857814
 Transform:
   m_ObjectHideFlags: 0
@@ -6192,6 +6204,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 6298596774202948673, guid: 293fb8bf94640044d849b11e9bc61f1d, type: 3}
+    - target: {fileID: 4741104973574056635, guid: 29f243f0ae86aca4a86a66074b8bdd61, type: 3}
+      propertyPath: maxY
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4741104973574056635, guid: 29f243f0ae86aca4a86a66074b8bdd61, type: 3}
       propertyPath: speedX
       value: 0
