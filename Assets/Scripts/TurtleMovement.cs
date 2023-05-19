@@ -3,6 +3,7 @@ using System.Collections;
 public class TurtleMovement : MonoBehaviour
 {
     private Animator _anim;
+    public GameObject finish;
     public float speedX = 30.0f;//сменить на приват
     public float speedY = 0.0f; //сменить на приват
     public float maxSpeed = 200.0f;
@@ -11,6 +12,7 @@ public class TurtleMovement : MonoBehaviour
     public float minY = -4.5f;
     public float reload = 1;// Пауза между ударами
     private float reloading = 0;// Текущее время между ударами
+    private Finish fin;
     public bool flying = false;
     public bool flyingNow = false;
     public bool slam = false;
@@ -19,6 +21,9 @@ public class TurtleMovement : MonoBehaviour
     public float skyHight = 30.0f;                      // При переходе в полёт, мы взлетаем до этой высоты
     public float slamReloadTime= 50;
     private float slamReloading = 0;
+    private bool result1 = false;
+    private bool result2 = false;
+    private bool noMovement = false;
 
 
     private bool flyUp;
@@ -33,6 +38,7 @@ public class TurtleMovement : MonoBehaviour
 
     void Start()
     {
+        fin = finish.GetComponent<Finish>(); 
         _anim = GetComponent<Animator>();
         _anim.SetBool("launched", false);
         _anim.SetBool("high_enough", false);
@@ -42,7 +48,16 @@ public class TurtleMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (timer == 0 && !boosterIsReady && !timerExpired)         // Условие, что по истечению таймера, от нас отнимут скорость
+        result1 = fin.ReturnResult1();
+        result2 = fin.ReturnResult2();
+        if (result1 == true || result2 == true)
+        {
+            noMovement = true;
+            speedX = 0;
+            //minY = -4.5f;
+            //speedY = 0;
+        }
+        else if (timer == 0 && !boosterIsReady && !timerExpired)         // Условие, что по истечению таймера, от нас отнимут скорость
         {
             speedX -= PlayerPrefs.GetInt("Booster");
             timerExpired = true;
@@ -76,8 +91,11 @@ public class TurtleMovement : MonoBehaviour
                         speedX -= 10;
                     slam = false;
                     if (speedX < 0)                                                           // Если ушли в отрицательную скорость, конец игры !!!!!!!!!!!!!!!!!!!!!!!!!
+                    {
                         Defeat();
-                }
+                        _anim.SetInteger("win", 0);
+                    }
+                    }
             }
             else if (flying)
             {
@@ -99,9 +117,12 @@ public class TurtleMovement : MonoBehaviour
 
     public void FlyUpPress()
     {
-         flyUp = true;
-        if (transform.position.y > maxY)
-            flyUp = false;
+        if (!noMovement)
+        {
+            flyUp = true;
+            if (transform.position.y > maxY)
+                flyUp = false;
+        }
     }
     public void FlyUpRelease()
     {
@@ -118,23 +139,26 @@ public class TurtleMovement : MonoBehaviour
 
     public void SlamButton()
     {
-        if (!flying)                                                                     // Если мы не летим (скорость меньше 40)
+        if (!noMovement)
         {
-            if ((slamReloading > slamReloadTime) && (!slam))                             // Удар в полёте
+            if (!flying)                                                                     // Если мы не летим (скорость меньше 40)
             {
-                slamReloading = 0;
-                slam = true;
-                speedY = -30;
+                if ((slamReloading > slamReloadTime) && (!slam))                             // Удар в полёте
+                {
+                    slamReloading = 0;
+                    slam = true;
+                    speedY = -30;
+                }
             }
-        }
-        else
-        {
-            if (boosterIsReady)
+            else
             {
-                boosterIsReady = false;
-                speedX += PlayerPrefs.GetInt("Booster");
-                timer = PlayerPrefs.GetInt("BoosterTime");
-                Debug.Log("Booster Activated");
+                if (boosterIsReady)
+                {
+                    boosterIsReady = false;
+                    speedX += PlayerPrefs.GetInt("Booster");
+                    timer = PlayerPrefs.GetInt("BoosterTime");
+                    Debug.Log("Booster Activated");
+                }
             }
         }
     }
