@@ -50,6 +50,7 @@ public class TurtleMovement : MonoBehaviour
     {
         result1 = fin.ReturnResult1();
         result2 = fin.ReturnResult2();
+
         if (result1 == true || result2 == true)
         {
             noMovement = true;
