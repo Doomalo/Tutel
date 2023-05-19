@@ -7,6 +7,9 @@ public class ButtonsController : MonoBehaviour
 {
 
     public Canvas pauseCanvas;
+    public Canvas settingsCanvas;
+    public GameObject resetMenu;
+    public UnityEngine.UI.Slider soundFill;
 
     public void PauseButton()
     {
@@ -33,7 +36,7 @@ public class ButtonsController : MonoBehaviour
 
     public void GoToShop()
     {
-        SceneManager.LoadScene("Shop");
+        SceneManager.LoadScene("StoreMenu");
     }
 
     public void GoToMenu()
@@ -42,11 +45,33 @@ public class ButtonsController : MonoBehaviour
     }
     public void Settings()
     {
-
+        settingsCanvas.gameObject.SetActive(true);
+    }
+    public void OnSoundChange()
+    {
+        PlayerPrefs.SetFloat("Sound", soundFill.value);
     }
     public void StartArcade()
     {
         PlayerPrefs.SetInt("Arcade", 1);
         SceneManager.LoadScene("SampleScene");
     }
+    public void ReturnToMainMenu()
+    {
+        settingsCanvas.gameObject.SetActive(false);
+    }
+    public void ResetButton()
+    {
+        resetMenu.SetActive(true);
+    }
+    public void ResetCommit()
+    {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void ResetCancel()
+    {
+        resetMenu.SetActive(false);
+    }
 }
+
