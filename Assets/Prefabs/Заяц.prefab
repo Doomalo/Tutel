@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  run: {fileID: 8300000, guid: d4949f5d6594b5f42b054d53a75cdc3a, type: 3}
+  laugh: {fileID: 8300000, guid: 26ebd3a11bb882745ae0b0068e6c3a82, type: 3}
 --- !u!61 &6807288038225501054
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -177,11 +177,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e72b81447d1f0d74cb15fe5cbb30c9ed, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
