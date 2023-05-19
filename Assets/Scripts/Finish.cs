@@ -10,8 +10,10 @@ public class Finish : MonoBehaviour
     private Animator bunnyAnim;
     private BunnyMovement bm;
     private TurtleMovement tm;
-    private bool turtleWin;
-    private bool bunnyWin;
+    private bool turtleWin = false;
+    private bool bunnyWin = false;
+    private bool result1 = false; //заяц выиграл
+    private bool result2 = false;   //черепаха выиграла
     private AudioSource bunnySound;
 
     private void Start()
@@ -34,18 +36,35 @@ public class Finish : MonoBehaviour
         else if (other.transform.CompareTag("Bunny"))                                                   // Если заколайдилось с зайцем
         {
             turtleWin = false;
-            bunnyWin = true;  
+            bunnyWin = true;
         }
+
 
         if (turtleWin && !bunnyWin)
         {
+            Debug.Log("bunny lost");
+            result2 = true;
+            bm.SetSpeed(0.0f);
             turtleAnim.SetInteger("win", 1);
             bunnyAnim.SetInteger("win", 0);
         }
-        else
+        else if (!(turtleWin && !bunnyWin))
         {
+            Debug.Log("Turtle lost");
+            result1 = true;
+            bm.SetSpeed(0.0f);
             turtleAnim.SetInteger("win", 0);
             bunnyAnim.SetInteger("win", 1);
         }
+    }
+
+    public bool ReturnResult1()
+    {
+        return result1;
+    }
+
+    public bool ReturnResult2()
+    {
+        return result2;
     }
 }

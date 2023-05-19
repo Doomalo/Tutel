@@ -10,6 +10,7 @@ public class BuyingController : MonoBehaviour
     public GameObject[] menusToCheck;
     public GameObject[] platformsMenus;
     public GameObject moneyText;
+    public GameObject usingObject;
 
 
     public void TryBuy()
@@ -35,16 +36,31 @@ public class BuyingController : MonoBehaviour
 
     public void TryUse()
     {
-
+        foreach (Transform p in MenuCheck().GetComponentInChildren<Transform>())                                               // Проверяем все объекты
+        {
+            GameObject go = p.gameObject;
+            if (go.activeSelf)                                                                   // находим объект активный
+            {
+                Debug.Log(go.name);
+                if (PlayerPrefs.GetInt(go.name, 0) == 1)                         //если объект был куплен, выбираем его
+                {
+                    Debug.Log("Successfully chose" + go.name);
+                }
+            }
+        }
     }
 
-    public int MenuCheck()
+    public GameObject MenuCheck()
     {
         foreach (GameObject parent in menusToCheck)                                               // Проверяем все объекты
         {
-            if (parent.activeSelf)                                                                   // находим объект активный
+            if (parent.activeSelf)
+            {
+                usingObject = parent;
                 break;
+            }                                                                                   // находим объект активный
+               
         }
-        return 0;
+        return usingObject;
     }
 }

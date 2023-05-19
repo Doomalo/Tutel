@@ -1841,6 +1841,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a98345309bac04d4aa6526f47ebd3e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menusToCheck:
+  - {fileID: 334027306}
+  - {fileID: 1433860199}
+  - {fileID: 867874495}
+  - {fileID: 951994521}
   platformsMenus:
   - {fileID: 2074650701}
   - {fileID: 1713006281}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BunnyMovement : MonoBehaviour
 {
-    public float speed;
+    public float speed = 10.0f;
     private Animator anim;
     private AudioSource audioSource;
     public AudioClip laugh;
@@ -17,7 +17,15 @@ public class BunnyMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        anim.SetBool("isMove", true);
-        transform.Translate(speed / 100.0f, 0, 0);           //Заяц просто ходит с определённой скоростью, можно добавить проверку на финиш потом
+        if (speed > 0)
+        {
+            anim.SetBool("isMove", true);
+            transform.Translate(speed / 100.0f, 0, 0);           //Заяц просто ходит с определённой скоростью, можно добавить проверку на финиш потом
+        }
+    }
+
+    public void SetSpeed(float sp)
+    {
+        this.speed = sp;
     }
 }
