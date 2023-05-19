@@ -12,6 +12,7 @@ public class Finish : MonoBehaviour
     private TurtleMovement tm;
     private bool turtleWin;
     private bool bunnyWin;
+    private AudioSource bunnySound;
 
     private void Start()
     {
@@ -19,10 +20,12 @@ public class Finish : MonoBehaviour
         bm = bunny.GetComponent<BunnyMovement>();
         turtleAnim = turtle.GetComponent<Animator>();
         bunnyAnim = bunny.GetComponent<Animator>();
+        bunnySound = bunny.GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        bunnySound.Stop();
         if (other.transform.CompareTag("Player"))                                                       // Если заколайдилось с игроком
         {
             turtleWin = true;

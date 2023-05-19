@@ -20,6 +20,8 @@ public class TurtleMovement : MonoBehaviour
 
     private bool boosterIsReady;
 
+    private AudioSource audioSource;
+    public AudioClip fall;
     //public bool win = true;
 
     public float timer = -1.0f;
@@ -30,6 +32,7 @@ public class TurtleMovement : MonoBehaviour
         _anim.SetBool("launched", false);
         _anim.SetBool("high_enough", false);
         _anim.SetBool("is_falling", false);
+        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -56,6 +59,7 @@ public class TurtleMovement : MonoBehaviour
                 speedY -= gravity;
                 if (transform.position.y < minY && ((reloading > reload) || (slam == true))) //Если позиция = земля и одно из двух: перезарядка закончилась или мы слэмим землю
                 {
+                    audioSource.PlayOneShot(fall);
                     reloading = 0;
                     speedY *= -0.9f;
                     if (!slam)                                                                // Если мы в состоянии удара, не замедляемся об пол
