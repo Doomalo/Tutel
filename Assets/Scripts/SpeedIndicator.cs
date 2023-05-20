@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SpeedIndicator : MonoBehaviour
 {
     public TurtleMovement turtle;
+    private double speed;
 
     private void FixedUpdate()
     {

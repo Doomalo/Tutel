@@ -13,7 +13,7 @@ public class BoosterGenerator : MonoBehaviour
     private float screenWidthInPoints;
 
     public List<GameObject> objects;            // Созданные на данный момент префабы (нужно для дальнейшего удаления)
-
+    public Transform turtle;
     public float objectsMinDistance = 10.0f;
     public float objectsMaxDistance = 20.0f;
 
@@ -54,7 +54,12 @@ public class BoosterGenerator : MonoBehaviour
 
         //3
         float objectPositionX = lastObjectX + Random.Range(objectsMinDistance, objectsMaxDistance);
-        float randomY = Random.Range(availableObjects[randomIndex].minY, availableObjects[randomIndex].maxY);
+        float randomY;
+        if (turtle.position.y > 30 && availableObjects[randomIndex].maxY >30)
+        {
+            randomY = Random.Range(30, availableObjects[randomIndex].maxY);
+        }
+        else randomY = Random.Range(availableObjects[randomIndex].minY, availableObjects[randomIndex].maxY);
         obj.transform.position = new Vector3(objectPositionX, randomY, 0);
 
 
