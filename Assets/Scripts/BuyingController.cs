@@ -18,7 +18,7 @@ public class BuyingController : MonoBehaviour
 
     public void TryBuy()
     {
-        int money = /*99999;*/PlayerPrefs.GetInt("Money", 0);                                                 // Текущая сумма денег
+        int money = 99999;//PlayerPrefs.GetInt("Money", 0);                                                 // Текущая сумма денег
         string menuName = MenuCheck().name;
         if (menuName == "Platforms")
             foreach (GameObject parent in platformsMenus)                                               // Проверяем все объекты
@@ -43,11 +43,13 @@ public class BuyingController : MonoBehaviour
                 if (parent.activeSelf)                                                                   // находим объект активный
                 {
                     int cost = int.Parse(parent.GetComponentInChildren<UnityEngine.UI.Text>().text);    // смотрим стоимость и выводим на всякий её в консоль
-                    Debug.Log(cost);
-                    if ((money >= cost) && (PlayerPrefs.GetInt(parent.name, 0) != 1))                         //если денег хватает и предмет не был куплен
+                    if (money >= cost)                         //если денег
                     {
                         Debug.Log("Successfully bought");
-                        PlayerPrefs.SetInt(parent.name, 1);
+                        int amount = PlayerPrefs.GetInt(parent.name, 0);
+                        amount++;
+                        Debug.Log(amount +" of " + parent.name);
+                        PlayerPrefs.SetInt(parent.name, amount);
                         money -= cost;
                         PlayerPrefs.SetInt("Money", money);                                                 // покупаем ии отнимаем деньги
                         moneyText.GetComponent<UnityEngine.UI.Text>().text = money.ToString();
@@ -81,7 +83,7 @@ public class BuyingController : MonoBehaviour
             if (go.activeSelf)                                                                   // находим объект активный
             {
                 Debug.Log(go.name);
-                if (PlayerPrefs.GetInt(go.name, 0) == 1)                         //если объект был куплен, выбираем его
+                if (PlayerPrefs.GetInt(go.name, 0) >= 1)                         //если объект был куплен, выбираем его
                 {
                     switch(go.name)
                     {

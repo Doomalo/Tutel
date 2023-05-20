@@ -29,8 +29,10 @@ public class TurtleMovement : MonoBehaviour
 
     private bool flyUp;
     private bool flyDown;
-    public bool timerExpired = false;
     public bool boosterIsReady = true;
+    private int speedChange;
+    private int rocketAmount;
+    private int fireworkAmount;
 
     private AudioSource audioSource;
     public AudioClip fall;
@@ -41,6 +43,9 @@ public class TurtleMovement : MonoBehaviour
 
     void Start()
     {
+        speedChange = PlayerPrefs.GetInt("Booster", 0);
+        rocketAmount = PlayerPrefs.GetInt("Rocket", 0);
+        fireworkAmount = PlayerPrefs.GetInt("Firework", 0);
         fin = finish.GetComponent<Finish>(); 
         _anim = GetComponent<Animator>();
         _anim.SetBool("launched", false);
@@ -61,10 +66,10 @@ public class TurtleMovement : MonoBehaviour
             //minY = -4.5f;
             //speedY = 0;
         }
-        else if (timer < 0 && !boosterIsReady && !timerExpired)         // Условие, что по истечению таймера, от нас отнимут скорость
+        else if (timer < 0 && !boosterIsReady)         // Условие, что по истечению таймера, от нас отнимут скорость
         {
-            speedX -= PlayerPrefs.GetInt("Booster");
-            timerExpired = true;
+            speedX -= speedChange;
+            boosterIsReady = true;
         }
         timer -= Time.deltaTime;
         FlyingNowCheck();
@@ -159,10 +164,35 @@ public class TurtleMovement : MonoBehaviour
             {
                 if (boosterIsReady)
                 {
-                    boosterIsReady = false;
-                    speedX += PlayerPrefs.GetInt("Booster");
-                    timer = PlayerPrefs.GetInt("BoosterTime");
-                    Debug.Log("Booster Activated");
+                    if (speedChange == 5)
+                    {
+                        if (fireworkAmount > 0)// если скорость фейрверка
+                        {
+                            boosterIsReady = false;
+                            speedX += PlayerPrefs.GetInt("Booster");
+                            timer = PlayerPrefs.GetInt("BoosterTime");
+                            Debug.Log("Booster Activated");
+                            Debug.Log("Firework Amount: " + rocketAmount);
+                            fireworkAmount--;
+                            PlayerPrefs.SetInt("Firework", fireworkAmount);
+                        }                                                       
+
+                    }
+                    if (speedChange == 8)
+                    {
+                        if (rocketAmount > 0)// если скорость фейрверка
+                        {
+                            rocketAmount--;
+                            boosterIsReady = false;
+                            speedX += PlayerPrefs.GetInt("Booster");
+                            timer = PlayerPrefs.GetInt("BoosterTime");
+                            Debug.Log("Booster Activated");
+                            Debug.Log("Rocket Amount: " + rocketAmount);
+                            PlayerPrefs.SetInt("Rocket", rocketAmount);
+                        }
+
+                    }
+                    
                 }
             }
         }
