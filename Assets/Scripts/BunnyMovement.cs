@@ -19,7 +19,7 @@ public class BunnyMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Debug.Log(stopBunny);
+       // Debug.Log(stopBunny);
         if (stopBunny)
             transform.Translate(stopSpeed, 0, 0);
         else 

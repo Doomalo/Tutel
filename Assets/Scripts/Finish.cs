@@ -15,9 +15,12 @@ public class Finish : MonoBehaviour
     private bool result1 = false; //за€ц выиграл
     private bool result2 = false;   //черепаха выиграла
     private AudioSource bunnySound;
+    private int level;
 
     private void Start()
     {
+        level = PlayerPrefs.GetInt("Level", 1);
+        this.gameObject.transform.position = new Vector3(Mathf.Pow(level, 2) * 300, 5, 0);
         bunny = GameObject.FindWithTag("Bunny");
         tm = turtle.GetComponent<TurtleMovement>();
         bm = bunny.GetComponent<BunnyMovement>();
@@ -46,6 +49,9 @@ public class Finish : MonoBehaviour
             result2 = true;
             turtleAnim.SetInteger("win", 1);
             bunnyAnim.SetInteger("win", 0);
+            level++;
+            PlayerPrefs.SetInt("Level", level);
+            
         }
         else if (!turtleWin && bunnyWin)
         {
