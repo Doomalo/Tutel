@@ -10,8 +10,8 @@ public class Finish : MonoBehaviour
     private Animator bunnyAnim;
     private BunnyMovement bm;
     private TurtleMovement tm;
-    private bool turtleWin = false;
-    private bool bunnyWin = false;
+    private bool turtleWin;
+    private bool bunnyWin;
     private bool result1 = false; //за€ц выиграл
     private bool result2 = false;   //черепаха выиграла
     private AudioSource bunnySound;
@@ -48,7 +48,7 @@ public class Finish : MonoBehaviour
             turtleAnim.SetInteger("win", 1);
             bunnyAnim.SetInteger("win", 0);
         }
-        else if (!(turtleWin && !bunnyWin))
+        else if (!turtleWin && bunnyWin)
         {
             Debug.Log("Turtle lost");
             result1 = true;
