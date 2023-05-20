@@ -1933,6 +1933,9 @@ MonoBehaviour:
   - {fileID: 1432821063}
   - {fileID: 500339499}
   - {fileID: 391636293}
+  bonusMenus:
+  - {fileID: 978672072}
+  - {fileID: 211323905}
   moneyText: {fileID: 780823534}
   usingObject: {fileID: 0}
 --- !u!1 &831797441

@@ -61,7 +61,7 @@ public class TurtleMovement : MonoBehaviour
             //minY = -4.5f;
             //speedY = 0;
         }
-        else if (timer == 0 && !boosterIsReady && !timerExpired)         // Условие, что по истечению таймера, от нас отнимут скорость
+        else if (timer < 0 && !boosterIsReady && !timerExpired)         // Условие, что по истечению таймера, от нас отнимут скорость
         {
             speedX -= PlayerPrefs.GetInt("Booster");
             timerExpired = true;
