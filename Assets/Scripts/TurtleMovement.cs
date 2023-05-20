@@ -188,6 +188,9 @@ public class TurtleMovement : MonoBehaviour
     {
         // При поражении открывать меню смерти + проигрывать анимацию
         PlayerPrefs.SetFloat("Score", distance);
+        int money = PlayerPrefs.GetInt("Money", 0);
+        money += (int)distance;
+        PlayerPrefs.SetInt("Money", money);
         buttonController.GetComponent<ButtonsController>().Defeat();
         Destroy(this);
     }
