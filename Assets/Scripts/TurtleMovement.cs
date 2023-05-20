@@ -24,6 +24,7 @@ public class TurtleMovement : MonoBehaviour
     private bool result1 = false;
     private bool result2 = false;
     private bool noMovement = false;
+    public GameObject buttonController;
 
 
     private bool flyUp;
@@ -35,6 +36,8 @@ public class TurtleMovement : MonoBehaviour
     public AudioClip fall;
 
     public float timer = -1.0f;
+
+    private float distance = 0;
 
     void Start()
     {
@@ -67,6 +70,7 @@ public class TurtleMovement : MonoBehaviour
         FlyingNowCheck();
         if (isLaunched)
         {
+            distance += speedX / 1000;
             _anim.SetBool("launched", true);
             reloading++;
             slamReloading++;// “ики перезар€дки
@@ -183,6 +187,8 @@ public class TurtleMovement : MonoBehaviour
     public void Defeat()
     {
         // ѕри поражении открывать меню смерти + проигрывать анимацию
+        PlayerPrefs.SetFloat("Score", distance);
+        buttonController.GetComponent<ButtonsController>().Defeat();
         Destroy(this);
     }
 }

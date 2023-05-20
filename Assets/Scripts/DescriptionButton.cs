@@ -8,6 +8,7 @@ public class DescriptionButton : MonoBehaviour, IPointerClickHandler
 {
     public List<GameObject> descriptions;
     public int pageNum = 0;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class DescriptionButton : MonoBehaviour, IPointerClickHandler
             descriptions[i].SetActive(false);
         }
         descriptions[0].SetActive(true);
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -26,5 +28,6 @@ public class DescriptionButton : MonoBehaviour, IPointerClickHandler
             descriptions[i].SetActive(false);
         }
         descriptions[pageNum].SetActive(true);
+        audioSource.Play();
     }
 }

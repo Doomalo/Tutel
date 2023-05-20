@@ -10,9 +10,10 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
     private static Image StrengthBarImage;
     public GameObject turtle;
     public GameObject bunny;
+    public GameObject startingPlatform;
     public float launchSpeed;
     public float barSpeed;
-    public float bar = 0.0f;
+    private float bar = 0.0f;
     private float strength = 0.0f;
     private float directionAng;
 
@@ -22,6 +23,8 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
 
     void Start()
     {
+        int id = DataController.platformNum;
+        SetLaunchSpeed(id);
         StrengthBarImage = GetComponent<Image>();
         tm = turtle.gameObject.GetComponent<TurtleMovement>();
         bm = bunny.gameObject.GetComponent<BunnyMovement>();
@@ -64,5 +67,17 @@ public class StartLaunch : MonoBehaviour // Добавить Нажал и держишь, когда отпу
     public bool ReturnLaunchState()
     {
         return tm.isLaunched;
+    }
+    void SetLaunchSpeed(int id)
+    {
+        switch (id)
+        {
+            case 0:launchSpeed = 80; break;
+            case 1: launchSpeed = 90; break;
+            case 2: launchSpeed = 100; break;
+            case 3: launchSpeed = 110; break;
+            case 4: launchSpeed = 130; break;
+            case 5: launchSpeed = 155; break;
+        }
     }
 }

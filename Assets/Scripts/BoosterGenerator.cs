@@ -83,10 +83,17 @@ public class BoosterGenerator : MonoBehaviour
                 //4
                 farthestObjectX = Mathf.Max(farthestObjectX, objX);
 
+<<<<<<< .mine
                 //5
                 if ((objX < removeObjectsX)/*|| (obj.gameObject.tag == "DestroyThis")||(farthestObjectX>addObjectX*1.3)*/)
                     objectsToRemove.Add(obj);
             }
+=======
+            //5
+            if (objX < removeObjectsX)//|| (obj.gameObject.tag == "DestroyThis")/*||(farthestObjectX>addObjectX*1.3)*/)
+                objectsToRemove.Add(obj);
+
+>>>>>>> .theirs
         }
 
         //6
