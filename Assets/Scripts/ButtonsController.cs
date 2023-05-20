@@ -45,6 +45,7 @@ public class ButtonsController : MonoBehaviour
     }
     public void Settings()
     {
+        pauseCanvas.gameObject.SetActive(false);
         settingsCanvas.gameObject.SetActive(true);
     }
     public void OnSoundChange()
@@ -59,6 +60,7 @@ public class ButtonsController : MonoBehaviour
     public void ReturnToMainMenu()
     {
         settingsCanvas.gameObject.SetActive(false);
+        pauseCanvas.gameObject.SetActive(true);
     }
     public void ResetButton()
     {

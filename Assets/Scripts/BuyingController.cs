@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class BuyingController : MonoBehaviour
@@ -15,7 +16,7 @@ public class BuyingController : MonoBehaviour
 
     public void TryBuy()
     {
-        int money = 15;//PlayerPrefs.GetInt("Money", 0);                                                 // Текущая сумма денег
+        int money = 99999;//PlayerPrefs.GetInt("Money", 0);                                                 // Текущая сумма денег
         foreach (GameObject parent in platformsMenus)                                               // Проверяем все объекты
         {
             if (parent.activeSelf)                                                                   // находим объект активный
@@ -44,6 +45,15 @@ public class BuyingController : MonoBehaviour
                 Debug.Log(go.name);
                 if (PlayerPrefs.GetInt(go.name, 0) == 1)                         //если объект был куплен, выбираем его
                 {
+                    switch(go.name)
+                    {
+                        case ("Sling"):DataController.platformNum = 0;break;
+                        case ("Donkey"): DataController.platformNum = 1; break;
+                        case ("Catapult"): DataController.platformNum = 2; break;
+                        case ("Bear"): DataController.platformNum = 3; break;
+                        case ("Geyser"): DataController.platformNum = 4; break;
+                        case ("Cannon"): DataController.platformNum = 5; break;
+                    }    
                     Debug.Log("Successfully chose" + go.name);
                 }
             }
@@ -62,5 +72,9 @@ public class BuyingController : MonoBehaviour
                
         }
         return usingObject;
+    }
+    public void loadLevel()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
