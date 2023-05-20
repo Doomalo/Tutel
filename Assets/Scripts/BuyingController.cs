@@ -11,6 +11,7 @@ public class BuyingController : MonoBehaviour
     public GameObject[] menusToCheck;
     public GameObject[] platformsMenus;
     public GameObject[] bonusMenus;
+    public GameObject[] boosterMenus;
     public GameObject moneyText;
     public GameObject usingObject;
 
@@ -53,6 +54,23 @@ public class BuyingController : MonoBehaviour
                     }
                 }
             }
+        else if (menuName == "Booster")
+            foreach (GameObject parent in boosterMenus)                                               // Проверяем все объекты
+            {
+                if (parent.activeSelf)                                                                   // находим объект активный
+                {
+                    int cost = int.Parse(parent.GetComponentInChildren<UnityEngine.UI.Text>().text);    // смотрим стоимость и выводим на всякий её в консоль
+                    Debug.Log(cost);
+                    if ((money >= cost) && (PlayerPrefs.GetInt(parent.name, 0) != 1))                         //если денег хватает и предмет не был куплен
+                    {
+                        Debug.Log("Successfully bought");
+                        PlayerPrefs.SetInt(parent.name, 1);
+                        money -= cost;
+                        PlayerPrefs.SetInt("Money", money);                                                 // покупаем ии отнимаем деньги
+                        moneyText.GetComponent<UnityEngine.UI.Text>().text = money.ToString();
+                    }
+                }
+            }
     }
 
     public void TryUse()
@@ -73,11 +91,11 @@ public class BuyingController : MonoBehaviour
                         case ("Bear"): DataController.platformNum = 3; break;
                         case ("Geyser"): DataController.platformNum = 4; break;
                         case ("Cannon"): DataController.platformNum = 5; break;
-                        case ("Firework"):Debug.Log("Firework1"); PlayerPrefs.SetInt("Booster", 5);PlayerPrefs.SetInt("BoosterTime", 5); break;
-                        case ("Rocket"): Debug.Log("Rocket1"); PlayerPrefs.SetInt("Booster", 8); PlayerPrefs.SetInt("BoosterTime", 8); DataController.platformNum = 5; break;
-                        case ("Fan"): break;
-                        case ("Pan"): break;
-                        case ("Ballons"):break;
+                        case ("Firework"): PlayerPrefs.SetInt("Booster", 5);PlayerPrefs.SetInt("BoosterTime", 5); break;
+                        case ("Rocket"): PlayerPrefs.SetInt("Booster", 8); PlayerPrefs.SetInt("BoosterTime", 8); DataController.platformNum = 5; break;
+                        case ("Fan"): PlayerPrefs.SetInt("FanUsed", 1); break;
+                        case ("Pan"): PlayerPrefs.SetInt("PanUsed", 1); break;
+                        case ("Ballons"): PlayerPrefs.SetInt("BoosterUsed", 1); break;
                     }    
                     Debug.Log("Successfully chose" + go.name);
                 }

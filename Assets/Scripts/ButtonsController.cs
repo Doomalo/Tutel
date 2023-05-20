@@ -12,7 +12,24 @@ public class ButtonsController : MonoBehaviour
     public UnityEngine.UI.Slider soundFill;
     public GameObject[] pauseObjects;
     public GameObject[] deathObjects;
+    public BoosterGenerator generator;
 
+    void Awake()
+    {
+        if(PlayerPrefs.GetInt("Fan",0)==1)
+        {
+            generator.availableObjects[0].weight *= 1.5f;
+        }
+        if (PlayerPrefs.GetInt("Pan", 0) == 1)
+        {
+            generator.availableObjects[13].weight *= 1.5f;
+        }
+        if (PlayerPrefs.GetInt("Ballons", 0) == 1)
+        {
+            generator.availableObjects[7].weight *= 1.5f;
+        }
+    }
+    
     public void PauseButton()
     {
         pauseCanvas.gameObject.SetActive(true);
