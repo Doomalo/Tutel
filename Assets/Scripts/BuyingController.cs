@@ -67,9 +67,10 @@ public class BuyingController : MonoBehaviour
             if (parent.activeSelf)
             {
                 usingObject = parent;
+                Debug.Log(usingObject.name);
                 break;
             }                                                                                   // находим объект активный
-               
+            
         }
         return usingObject;
     }
