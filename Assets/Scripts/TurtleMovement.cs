@@ -74,8 +74,8 @@ public class TurtleMovement : MonoBehaviour
             _anim.SetBool("launched", true);
             reloading++;
             slamReloading++;// Тики перезарядки
-            if(!flyingNow)
-            transform.Translate(speedX / 100.0f, speedY / 100.0f, 0);                        // Само перемещение
+            if (!flyingNow)
+                transform.Translate(speedX / 100.0f, speedY / 100.0f, 0);                        // Само перемещение
             speedX *= 0.9995f;                                                                // Замедление в полёте
             if (speedX > 40)
             {// Если ушли в +40 скорость, то взлетаем
@@ -100,7 +100,7 @@ public class TurtleMovement : MonoBehaviour
                         Defeat();
                         _anim.SetInteger("win", 0);
                     }
-                    }
+                }
             }
             else if (flying)
             {

@@ -5650,7 +5650,7 @@ MonoBehaviour:
     maxY: 50
   - name: "\u041F\u0443\u0441\u0442\u043E\u0442\u0430"
     prefab: {fileID: 2630391643714625360, guid: 1c9dce45dc1a57b42b9b6e0f3690e33e, type: 3}
-    weight: 300
+    weight: 50
     minY: -5
     maxY: 50
   level2: []
