@@ -16,17 +16,20 @@ public class ButtonsController : MonoBehaviour
 
     void Awake()
     {
-        if(PlayerPrefs.GetInt("Fan",0)==1)
+        if (generator != null)
         {
-            generator.availableObjects[0].weight *= 1.5f;
-        }
-        if (PlayerPrefs.GetInt("Pan", 0) == 1)
-        {
-            generator.availableObjects[13].weight *= 1.5f;
-        }
-        if (PlayerPrefs.GetInt("Ballons", 0) == 1)
-        {
-            generator.availableObjects[7].weight *= 1.5f;
+            if (PlayerPrefs.GetInt("Fan", 0) == 1)
+            {
+                generator.availableObjects[0].weight *= 1.5f;
+            }
+            if (PlayerPrefs.GetInt("Pan", 0) == 1)
+            {
+                generator.availableObjects[13].weight *= 1.5f;
+            }
+            if (PlayerPrefs.GetInt("Ballons", 0) == 1)
+            {
+                generator.availableObjects[7].weight *= 1.5f;
+            }
         }
     }
     
