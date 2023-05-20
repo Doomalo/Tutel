@@ -87,6 +87,7 @@ public class BoosterGenerator : MonoBehaviour
                 if ((objX < removeObjectsX)/*|| (obj.gameObject.tag == "DestroyThis")||(farthestObjectX>addObjectX*1.3)*/)
                     objectsToRemove.Add(obj);
             }
+
         }
 
         //6

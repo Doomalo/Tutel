@@ -9,6 +9,7 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
     public List<GameObject> images;
     public List<GameObject> pages;
     public List<GameObject> descriptionPages;
+    private AudioSource audioSource;
     public int pageNum = 0;
     private bool selected = false;
 
@@ -35,6 +36,7 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
             descriptionPages[i].SetActive(false);
         }
         descriptionPages[0].SetActive(true);
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -72,6 +74,7 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
             }
             descriptionPages[pageNum].SetActive(true);
         }
+        audioSource.Play();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
