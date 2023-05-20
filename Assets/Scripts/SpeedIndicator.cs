@@ -6,7 +6,6 @@ using System;
 public class SpeedIndicator : MonoBehaviour
 {
     public TurtleMovement turtle;
-    private double speed;
 
     private void FixedUpdate()
     {

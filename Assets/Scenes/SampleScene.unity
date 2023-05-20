@@ -4260,6 +4260,7 @@ MonoBehaviour:
   - {fileID: 647345805}
   - {fileID: 87058472}
   generator: {fileID: 1680857815}
+  audios: []
 --- !u!4 &1172868910
 Transform:
   m_ObjectHideFlags: 0
@@ -5826,12 +5827,12 @@ MonoBehaviour:
     prefab: {fileID: 459226492721626510, guid: edc3416027233b5448c08ac196c735db, type: 3}
     weight: 20
     minY: -5
-    maxY: 3
+    maxY: 1
   - name: "\u041A\u0430\u043C\u0435\u043D\u044C"
     prefab: {fileID: 4345358761013597833, guid: aee7ec74c6b364e45bd405d747a4ab98, type: 3}
     weight: 20
     minY: -5
-    maxY: 3
+    maxY: 1
   - name: "\u041E\u0431\u043B\u0430\u043A\u043E"
     prefab: {fileID: 6686070980900851947, guid: fd4e2b9adbd1b6346933532ebe9bd150, type: 3}
     weight: 10
