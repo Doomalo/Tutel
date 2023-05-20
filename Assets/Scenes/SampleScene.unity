@@ -5563,63 +5563,83 @@ MonoBehaviour:
   availableObjects:
   - name: "\u0412\u0435\u0442\u0435\u0440"
     prefab: {fileID: 8021176858672969201, guid: 2ede2532f22dfba49908dbc8c576d563, type: 3}
-    weight: 1
-    minY: 10
-    maxY: 50
+    weight: 30
+    minY: 3
+    maxY: 40
   - name: "\u0412\u0435\u0442\u043A\u0430"
     prefab: {fileID: 2501642842963985615, guid: 294a028c848d7d64ca65f34883ee8286, type: 3}
-    weight: 1
-    minY: -2
-    maxY: 5
+    weight: 3
+    minY: -5
+    maxY: 4
   - name: "\u0413\u0440\u0438\u0431"
     prefab: {fileID: 3496971002013615030, guid: d3f8f13037d33be43821b4a5c4d5b157, type: 3}
-    weight: 1
-    minY: -4
-    maxY: -3
+    weight: 5
+    minY: -5
+    maxY: 2
   - name: "\u041F\u0430\u0443\u0442\u0438\u043D\u0430"
     prefab: {fileID: 417766989676048383, guid: ce98f51462da1fa43b35b83430cec4ca, type: 3}
-    weight: 1
-    minY: -2
-    maxY: 5
+    weight: 3
+    minY: -5
+    maxY: 3
   - name: "\u041F\u0442\u0438\u0446\u0430"
     prefab: {fileID: 6507339362739352253, guid: 0182476fedf400e4ebe6ff6d0470cd25, type: 3}
-    weight: 1
+    weight: 30
     minY: 10
-    maxY: 50
+    maxY: 45
   - name: "\u041F\u0447\u0451\u043B\u044B"
     prefab: {fileID: 3502931594405642457, guid: 3c7b1e09be2ded641bae9893a26801f4, type: 3}
-    weight: 1
+    weight: 15
     minY: 3
     maxY: 25
   - name: "\u0421\u0430\u043C\u043E\u043B\u0451\u0442"
     prefab: {fileID: 4030936062342113622, guid: 3804080855660da40924bbff6ad43af4, type: 3}
-    weight: 1
+    weight: 5
     minY: 30
     maxY: 50
   - name: "\u0428\u0430\u0440\u0438\u043A"
     prefab: {fileID: 8709558036558708112, guid: 104a1a9b9fd62314a92309e5a1ea0641, type: 3}
-    weight: 1
+    weight: 20
     minY: 6
-    maxY: 36
+    maxY: 35
   - name: "\u0401\u0436"
     prefab: {fileID: 3757953076022599555, guid: 20d044f71aef52a499207964dfa5f427, type: 3}
-    weight: 1
-    minY: -4
-    maxY: -3
+    weight: 5
+    minY: -5
+    maxY: 3
   - name: "\u0410\u0438\u0441\u0442"
     prefab: {fileID: 545660083343647776, guid: 217d75e6f690a7a4fbfd1fa31e2b4e50, type: 3}
-    weight: 5
+    weight: 10
     minY: 8
-    maxY: 36
+    maxY: 40
   - name: "\u041C\u0435\u0434\u0432\u0435\u0434\u044C"
     prefab: {fileID: 6647424081838662252, guid: 47d1696ac9a808f49b3c8daf97aabb6d, type: 3}
-    weight: 1
-    minY: -4
-    maxY: -3
+    weight: 2
+    minY: -5
+    maxY: 3
   - name: "\u041C\u043E\u043D\u0435\u0442\u0430"
     prefab: {fileID: 8392953195184271530, guid: 61d913add4a7d8b47af482e723ff05cd, type: 3}
-    weight: 1
-    minY: -4
+    weight: 70
+    minY: -5
+    maxY: 50
+  - name: "\u0411\u0440\u0435\u0432\u043D\u043E"
+    prefab: {fileID: 459226492721626510, guid: edc3416027233b5448c08ac196c735db, type: 3}
+    weight: 20
+    minY: -5
+    maxY: 3
+  - name: "\u041A\u0430\u043C\u0435\u043D\u044C"
+    prefab: {fileID: 4345358761013597833, guid: aee7ec74c6b364e45bd405d747a4ab98, type: 3}
+    weight: 20
+    minY: -5
+    maxY: 3
+  - name: "\u041E\u0431\u043B\u0430\u043A\u043E"
+    prefab: {fileID: 6686070980900851947, guid: fd4e2b9adbd1b6346933532ebe9bd150, type: 3}
+    weight: 10
+    minY: 30
+    maxY: 50
+  - name: "\u041F\u0443\u0441\u0442\u043E\u0442\u0430"
+    prefab: {fileID: 0}
+    weight: 300
+    minY: -5
     maxY: 50
   level2: []
   level3: []
@@ -6047,7 +6067,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943402987}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2191, y: -5.43, z: 0}
+  m_LocalPosition: {x: -0.2191, y: -5, z: 0}
   m_LocalScale: {x: 246.886, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

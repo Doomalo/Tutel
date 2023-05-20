@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 907c5fa9716bed0408837379d2ebb64d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XValue: 10
+  XValue: -1
   YValue: -1
   type: 1
 --- !u!114 &4699770476227192827
@@ -113,8 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 907c5fa9716bed0408837379d2ebb64d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XValue: -1
-  YValue: 40
+  XValue: -5
+  YValue: -5
   type: 0
 --- !u!50 &5810026935173191310
 Rigidbody2D:
