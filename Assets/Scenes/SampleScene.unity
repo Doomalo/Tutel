@@ -853,9 +853,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turtle: {fileID: 2089944327}
   bunny: {fileID: 1845976166}
+  startingPlatform: {fileID: 0}
   launchSpeed: 60
   barSpeed: 1
-  bar: 0
   platformSounds:
   - {fileID: 8300000, guid: 59a39c1df3826b943afb430e29ae1428, type: 3}
   - {fileID: 8300000, guid: 4f947fb3b55d9f944b1fe7484e17665c, type: 3}
