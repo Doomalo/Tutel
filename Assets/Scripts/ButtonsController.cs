@@ -13,6 +13,7 @@ public class ButtonsController : MonoBehaviour
     public GameObject[] pauseObjects;
     public GameObject[] deathObjects;
     public BoosterGenerator generator;
+    public AudioSource[] audios;
 
     void Awake()
     {
@@ -32,7 +33,16 @@ public class ButtonsController : MonoBehaviour
             }
         }
     }
-    
+    void Start ()
+    {
+        audios = FindObjectsOfType<AudioSource>();
+        float volume = PlayerPrefs.GetFloat("Sound", 0.2f);
+        if (soundFill!=null) soundFill.value = volume;
+        foreach (AudioSource a in audios)
+        {
+            a.volume = volume;
+        }
+    }
     public void PauseButton()
     {
         pauseCanvas.gameObject.SetActive(true);
