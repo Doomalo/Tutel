@@ -9,7 +9,7 @@ public class SpeedIndicator : MonoBehaviour
     private void FixedUpdate()
     {
         if (turtle)
-            this.gameObject.GetComponent<UnityEngine.UI.Text>().text = turtle.speedX.ToString();
+            this.gameObject.GetComponent<UnityEngine.UI.Text>().text = ((int)(turtle.speedX)).ToString();
         else
             this.gameObject.GetComponent<UnityEngine.UI.Text>().text = "0";
     }
