@@ -46,7 +46,7 @@ public class Booster : MonoBehaviour
                 if (YValue != -1)
                     tm.speedY = YValue;
             }
-            this.gameObject.transform.tag = "DestroyThis";                                                                     // После коллизии удаляем бустер
+                // this.gameObject.transform.tag = "DestroyThis";                                                                     // После коллизии удаляем бустер
         }
 
     }

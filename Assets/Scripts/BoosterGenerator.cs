@@ -75,15 +75,18 @@ public class BoosterGenerator : MonoBehaviour
 
         foreach (var obj in objects)
         {
-            //3
-            float objX = obj.transform.position.x;
+            if (obj != null)
+            {
+                //3
+                float objX = obj.transform.position.x;
 
-            //4
-            farthestObjectX = Mathf.Max(farthestObjectX, objX);
+                //4
+                farthestObjectX = Mathf.Max(farthestObjectX, objX);
 
-            //5
-            if ((objX < removeObjectsX )|| (obj.gameObject.tag == "DestroyThis")/*||(farthestObjectX>addObjectX*1.3)*/)
-                objectsToRemove.Add(obj);
+                //5
+                if ((objX < removeObjectsX)/*|| (obj.gameObject.tag == "DestroyThis")||(farthestObjectX>addObjectX*1.3)*/)
+                    objectsToRemove.Add(obj);
+            }
         }
 
         //6
