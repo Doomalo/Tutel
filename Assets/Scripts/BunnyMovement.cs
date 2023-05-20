@@ -19,7 +19,6 @@ public class BunnyMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-       // Debug.Log(stopBunny);
         if (stopBunny)
             transform.Translate(stopSpeed, 0, 0);
         else 
@@ -29,12 +28,8 @@ public class BunnyMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void SetSpeed()
     {
-        if (other.transform.CompareTag("Fin"))
-        {
-            stopBunny = true;
-            anim.SetInteger("win", 1);
-        }
+        stopBunny = true;
     }
 }
