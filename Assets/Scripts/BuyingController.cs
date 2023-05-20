@@ -18,7 +18,7 @@ public class BuyingController : MonoBehaviour
 
     public void TryBuy()
     {
-        int money = 99999;//PlayerPrefs.GetInt("Money", 0);                                                 // Текущая сумма денег
+        int money =/* 99999;*/PlayerPrefs.GetInt("Money", 0);                                                 // Текущая сумма денег
         string menuName = MenuCheck().name;
         if (menuName == "Platforms")
             foreach (GameObject parent in platformsMenus)                                               // Проверяем все объекты
