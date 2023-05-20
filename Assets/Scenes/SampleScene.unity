@@ -2302,7 +2302,7 @@ GameObject:
   - component: {fileID: 627208095}
   m_Layer: 0
   m_Name: "\u0424\u0438\u043D\u0438\u0448"
-  m_TagString: Untagged
+  m_TagString: Fin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

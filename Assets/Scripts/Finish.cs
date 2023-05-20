@@ -18,6 +18,7 @@ public class Finish : MonoBehaviour
 
     private void Start()
     {
+        bunny = GameObject.FindWithTag("Bunny");
         tm = turtle.GetComponent<TurtleMovement>();
         bm = bunny.GetComponent<BunnyMovement>();
         turtleAnim = turtle.GetComponent<Animator>();
@@ -39,12 +40,11 @@ public class Finish : MonoBehaviour
             bunnyWin = true;
         }
 
-
         if (turtleWin && !bunnyWin)
         {
             Debug.Log("bunny lost");
             result2 = true;
-            bm.SetSpeed(0.0f);
+            bm.SetSpeed();
             turtleAnim.SetInteger("win", 1);
             bunnyAnim.SetInteger("win", 0);
         }
@@ -52,7 +52,7 @@ public class Finish : MonoBehaviour
         {
             Debug.Log("Turtle lost");
             result1 = true;
-            bm.SetSpeed(0.0f);
+            bm.SetSpeed();
             turtleAnim.SetInteger("win", 0);
             bunnyAnim.SetInteger("win", 1);
         }

@@ -91,7 +91,7 @@ public class TurtleMovement : MonoBehaviour
                     if (!slam)                                                                // ≈сли мы в состо€нии удара, не замедл€емс€ об пол
                         speedX -= 10;
                     slam = false;
-                    if (speedX < 0)                                                           // ≈сли ушли в отрицательную скорость, конец игры !!!!!!!!!!!!!!!!!!!!!!!!!
+                    if (speedX < 0 && (!result2))                                                           // ≈сли ушли в отрицательную скорость, конец игры !!!!!!!!!!!!!!!!!!!!!!!!!
                     {
                         Defeat();
                         _anim.SetInteger("win", 0);
