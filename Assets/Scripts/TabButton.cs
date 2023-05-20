@@ -18,6 +18,7 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
         {
             images[1].SetActive(true);
             images[0].SetActive(false);
+            selected = true;
         }
         else
         {
@@ -29,7 +30,7 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
             pages[i].SetActive(false);
         }
         pages[0].SetActive(true);
-        for (int i = 1; i < descriptionPages.Count; i++)
+        for (int i = 0; i < descriptionPages.Count; i++)
         {
             descriptionPages[i].SetActive(false);
         }
